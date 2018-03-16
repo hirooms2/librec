@@ -1,0 +1,1577 @@
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Job Setup completed.
+BPRRecommender iter 1: loss = 103693.92760693612, delta_loss = -103693.93
+BPRRecommender iter 2: loss = 82653.55355686124, delta_loss = 21040.375
+BPRRecommender iter 3: loss = 47449.154566807, delta_loss = 35204.4
+BPRRecommender iter 4: loss = 38630.81707984664, delta_loss = 8818.338
+BPRRecommender iter 5: loss = 35057.11274606453, delta_loss = 3573.7043
+BPRRecommender iter 6: loss = 32492.908609687554, delta_loss = 2564.204
+BPRRecommender iter 7: loss = 30590.36702416232, delta_loss = 1902.5416
+BPRRecommender iter 8: loss = 29164.41493440439, delta_loss = 1425.9521
+BPRRecommender iter 9: loss = 28042.55828869365, delta_loss = 1121.8567
+BPRRecommender iter 10: loss = 27089.170258116137, delta_loss = 953.388
+BPRRecommender iter 11: loss = 26363.96537239748, delta_loss = 725.2049
+BPRRecommender iter 12: loss = 25597.633186903196, delta_loss = 766.3322
+BPRRecommender iter 13: loss = 25079.07585185365, delta_loss = 518.5573
+BPRRecommender iter 14: loss = 24564.40155065383, delta_loss = 514.6743
+BPRRecommender iter 15: loss = 24233.792852004106, delta_loss = 330.6087
+BPRRecommender iter 16: loss = 23853.486633767672, delta_loss = 380.3062
+BPRRecommender iter 17: loss = 23530.776407304165, delta_loss = 322.71024
+BPRRecommender iter 18: loss = 23226.157791597558, delta_loss = 304.61862
+BPRRecommender iter 19: loss = 22805.252304054582, delta_loss = 420.9055
+BPRRecommender iter 20: loss = 22675.530696778344, delta_loss = 129.7216
+BPRRecommender iter 21: loss = 22439.747014502853, delta_loss = 235.78368
+BPRRecommender iter 22: loss = 22272.949637746166, delta_loss = 166.79738
+BPRRecommender iter 23: loss = 22220.853420552718, delta_loss = 52.09622
+BPRRecommender iter 24: loss = 21883.759756989366, delta_loss = 337.09366
+BPRRecommender iter 25: loss = 21862.31999498096, delta_loss = 21.439762
+BPRRecommender iter 26: loss = 21730.123682453166, delta_loss = 132.19632
+BPRRecommender iter 27: loss = 21531.177399477587, delta_loss = 198.94629
+BPRRecommender iter 28: loss = 21360.88206518105, delta_loss = 170.29533
+BPRRecommender iter 29: loss = 21380.330137458874, delta_loss = -19.448072
+BPRRecommender iter 30: loss = 21162.538282499558, delta_loss = 217.79185
+Job Train completed.
+Job End.
+Evaluator value:Entropy top 10 is 22.465672692654852
+Evaluator value:AUC top 10 is 0.9202142220512948
+Evaluator value:RECALL top 10 is 0.6259966129870677
+Evaluator value:AP top 10 is 0.43217497314924663
+Evaluator value:Novelty top 10 is 16.532369704446857
+Evaluator value:RR top 10 is 0.5633808772127645
+Evaluator value:NDCG top 10 is 0.5305255969875381
+Evaluator value:PRECISION top 10 is 0.3433307024467252
+Result path is ../result/filmtrust/rating-bpr-output/bpr
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+BPRRecommender iter 1: loss = 65654.04523113868, delta_loss = -65654.05
+BPRRecommender iter 2: loss = 65631.2459959863, delta_loss = 22.799234
+BPRRecommender iter 3: loss = 65616.28813751321, delta_loss = 14.957858
+BPRRecommender iter 4: loss = 65593.98446560206, delta_loss = 22.303673
+BPRRecommender iter 5: loss = 65571.23950374489, delta_loss = 22.744963
+BPRRecommender iter 6: loss = 65549.91967959917, delta_loss = 21.319824
+BPRRecommender iter 7: loss = 65535.36820276709, delta_loss = 14.5514765
+BPRRecommender iter 8: loss = 65523.56607175441, delta_loss = 11.802131
+BPRRecommender iter 9: loss = 65474.32127206159, delta_loss = 49.2448
+BPRRecommender iter 10: loss = 65454.11145132031, delta_loss = 20.20982
+BPRRecommender iter 11: loss = 65421.39035858583, delta_loss = 32.721092
+BPRRecommender iter 12: loss = 65364.83759828523, delta_loss = 56.55276
+BPRRecommender iter 13: loss = 65295.85742533258, delta_loss = 68.98017
+BPRRecommender iter 14: loss = 65194.737361328276, delta_loss = 101.12006
+BPRRecommender iter 15: loss = 65040.5685482223, delta_loss = 154.16881
+BPRRecommender iter 16: loss = 64820.78960123333, delta_loss = 219.77895
+BPRRecommender iter 17: loss = 64530.15255371831, delta_loss = 290.63705
+BPRRecommender iter 18: loss = 64186.77377745106, delta_loss = 343.37878
+BPRRecommender iter 19: loss = 63742.66367983074, delta_loss = 444.1101
+BPRRecommender iter 20: loss = 63354.83594739093, delta_loss = 387.82773
+BPRRecommender iter 21: loss = 62981.25768620617, delta_loss = 373.57825
+BPRRecommender iter 22: loss = 62512.95726470978, delta_loss = 468.3004
+BPRRecommender iter 23: loss = 62262.239416334414, delta_loss = 250.71785
+BPRRecommender iter 24: loss = 62025.28921032633, delta_loss = 236.95021
+BPRRecommender iter 25: loss = 61872.410531219604, delta_loss = 152.87868
+BPRRecommender iter 26: loss = 61740.35220551394, delta_loss = 132.05832
+BPRRecommender iter 27: loss = 61800.53831363257, delta_loss = -60.186108
+BPRRecommender iter 28: loss = 61648.84645614392, delta_loss = 151.69186
+BPRRecommender iter 29: loss = 61555.13469231604, delta_loss = 93.71176
+BPRRecommender iter 30: loss = 61670.11438018412, delta_loss = -114.97969
+Job Train completed.
+Job End.
+Evaluator value:Entropy top 10 is 39.09557046565709
+Evaluator value:AUC top 10 is 0.09115825918513701
+Evaluator value:RECALL top 10 is 0.030396224127652822
+Evaluator value:AP top 10 is 1.0
+Evaluator value:Novelty top 10 is 0.0
+Evaluator value:RR top 10 is 1.0
+Evaluator value:NDCG top 10 is 1.0
+Evaluator value:PRECISION top 10 is 1.0
+Result path is ../result/preference-bpr-output/bpr
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+BPRRecommender iter 1: loss = 65654.04523113868, delta_loss = -65654.05
+BPRRecommender iter 2: loss = 65631.2459959863, delta_loss = 22.799234
+BPRRecommender iter 3: loss = 65616.28813751321, delta_loss = 14.957858
+BPRRecommender iter 4: loss = 65593.98446560206, delta_loss = 22.303673
+BPRRecommender iter 5: loss = 65571.23950374489, delta_loss = 22.744963
+BPRRecommender iter 6: loss = 65549.91967959917, delta_loss = 21.319824
+BPRRecommender iter 7: loss = 65535.36820276709, delta_loss = 14.5514765
+BPRRecommender iter 8: loss = 65523.56607175441, delta_loss = 11.802131
+BPRRecommender iter 9: loss = 65474.32127206159, delta_loss = 49.2448
+BPRRecommender iter 10: loss = 65454.11145132031, delta_loss = 20.20982
+BPRRecommender iter 11: loss = 65421.39035858583, delta_loss = 32.721092
+BPRRecommender iter 12: loss = 65364.83759828523, delta_loss = 56.55276
+BPRRecommender iter 13: loss = 65295.85742533258, delta_loss = 68.98017
+BPRRecommender iter 14: loss = 65194.737361328276, delta_loss = 101.12006
+BPRRecommender iter 15: loss = 65040.5685482223, delta_loss = 154.16881
+BPRRecommender iter 16: loss = 64820.78960123333, delta_loss = 219.77895
+BPRRecommender iter 17: loss = 64530.15255371831, delta_loss = 290.63705
+BPRRecommender iter 18: loss = 64186.77377745106, delta_loss = 343.37878
+BPRRecommender iter 19: loss = 63742.66367983074, delta_loss = 444.1101
+BPRRecommender iter 20: loss = 63354.83594739093, delta_loss = 387.82773
+BPRRecommender iter 21: loss = 62981.25768620617, delta_loss = 373.57825
+BPRRecommender iter 22: loss = 62512.95726470978, delta_loss = 468.3004
+BPRRecommender iter 23: loss = 62262.239416334414, delta_loss = 250.71785
+BPRRecommender iter 24: loss = 62025.28921032633, delta_loss = 236.95021
+BPRRecommender iter 25: loss = 61872.410531219604, delta_loss = 152.87868
+BPRRecommender iter 26: loss = 61740.35220551394, delta_loss = 132.05832
+BPRRecommender iter 27: loss = 61800.53831363257, delta_loss = -60.186108
+BPRRecommender iter 28: loss = 61648.84645614392, delta_loss = 151.69186
+BPRRecommender iter 29: loss = 61555.13469231604, delta_loss = 93.71176
+BPRRecommender iter 30: loss = 61670.11438018412, delta_loss = -114.97969
+Job Train completed.
+Job End.
+Evaluator value:RECALL top 10 is 0.030396224127652822
+Evaluator value:Novelty top 10 is 0.0
+Evaluator value:PRECISION top 10 is 1.0
+Evaluator value:AUC top 10 is 0.09115825918513701
+Evaluator value:AP top 10 is 1.0
+Evaluator value:NDCG top 10 is 1.0
+Evaluator value:Entropy top 10 is 39.09557046565709
+Evaluator value:RR top 10 is 1.0
+Result path is ../result/preference-bpr-output/bpr
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978286
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1244967
+Data size of testing is 310983
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+MyRecommender iter 1: loss = 65622.28545431582, delta_loss = -65622.29
+MyRecommender iter 2: loss = 65565.12050033614, delta_loss = 57.164955
+MyRecommender iter 3: loss = 65550.51573331354, delta_loss = 14.604767
+MyRecommender iter 4: loss = 65541.217758824, delta_loss = 9.297975
+MyRecommender iter 5: loss = 65533.19721053192, delta_loss = 8.020548
+MyRecommender iter 6: loss = 65526.599997745936, delta_loss = 6.597213
+MyRecommender iter 7: loss = 65521.005024209226, delta_loss = 5.5949736
+MyRecommender iter 8: loss = 65515.557850592326, delta_loss = 5.4471736
+MyRecommender iter 9: loss = 65510.62223836213, delta_loss = 4.935612
+MyRecommender iter 10: loss = 65505.72672059108, delta_loss = 4.895518
+MyRecommender iter 11: loss = 65501.646551788726, delta_loss = 4.0801687
+MyRecommender iter 12: loss = 65497.26596778459, delta_loss = 4.3805842
+MyRecommender iter 13: loss = 65493.25671715048, delta_loss = 4.0092506
+MyRecommender iter 14: loss = 65489.44655580194, delta_loss = 3.8101614
+MyRecommender iter 15: loss = 65486.06240206866, delta_loss = 3.3841538
+MyRecommender iter 16: loss = 65482.696923039606, delta_loss = 3.365479
+MyRecommender iter 17: loss = 65478.92448468256, delta_loss = 3.7724383
+MyRecommender iter 18: loss = 65475.99263341972, delta_loss = 2.9318511
+MyRecommender iter 19: loss = 65472.954017960394, delta_loss = 3.0386155
+MyRecommender iter 20: loss = 65469.939578605066, delta_loss = 3.0144393
+MyRecommender iter 21: loss = 65467.30178977635, delta_loss = 2.6377888
+MyRecommender iter 22: loss = 65464.460823982576, delta_loss = 2.8409657
+MyRecommender iter 23: loss = 65461.93218205659, delta_loss = 2.528642
+MyRecommender iter 24: loss = 65459.38778569557, delta_loss = 2.5443964
+MyRecommender iter 25: loss = 65456.82106899419, delta_loss = 2.5667167
+MyRecommender iter 26: loss = 65454.10428834017, delta_loss = 2.7167807
+MyRecommender iter 27: loss = 65452.07147075799, delta_loss = 2.0328176
+MyRecommender iter 28: loss = 65449.83137120162, delta_loss = 2.2400997
+MyRecommender iter 29: loss = 65447.824274180086, delta_loss = 2.007097
+MyRecommender iter 30: loss = 65446.01779485109, delta_loss = 1.8064793
+Job Train completed.
+Job End.
+Evaluator value:PRECISION top 10 is 0.004665959703075292
+Evaluator value:RR top 10 is 0.010075493612078977
+Evaluator value:RECALL top 10 is 0.0016291220578564542
+Evaluator value:AUC top 10 is 0.52112244636573
+Evaluator value:Entropy top 10 is 55.25866023780302
+Evaluator value:AP top 10 is 0.0011312679896985304
+Evaluator value:Novelty top 10 is 67.26495137871821
+Evaluator value:NDCG top 10 is 0.004183980212236782
+Result path is ../result/movielens/ml-100k-myrec-output/myrec
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+BPRRecommender iter 1: loss = 65597.33384025922, delta_loss = -65597.336
+BPRRecommender iter 2: loss = 65454.79038122726, delta_loss = 142.54346
+BPRRecommender iter 3: loss = 65124.048499695185, delta_loss = 330.74188
+BPRRecommender iter 4: loss = 64189.11108688194, delta_loss = 934.93744
+BPRRecommender iter 5: loss = 61338.89304512981, delta_loss = 2850.218
+BPRRecommender iter 6: loss = 56001.78186863758, delta_loss = 5337.1113
+BPRRecommender iter 7: loss = 49993.29775590468, delta_loss = 6008.484
+BPRRecommender iter 8: loss = 44847.32311067478, delta_loss = 5145.9746
+BPRRecommender iter 9: loss = 40891.05077089586, delta_loss = 3956.2725
+BPRRecommender iter 10: loss = 37991.9579380683, delta_loss = 2899.0928
+BPRRecommender iter 11: loss = 36165.9941014867, delta_loss = 1825.9639
+BPRRecommender iter 12: loss = 34311.39182967422, delta_loss = 1854.6023
+BPRRecommender iter 13: loss = 33391.193254986305, delta_loss = 920.19855
+BPRRecommender iter 14: loss = 32457.294961182204, delta_loss = 933.8983
+BPRRecommender iter 15: loss = 31804.09269752792, delta_loss = 653.2023
+BPRRecommender iter 16: loss = 31108.19246125053, delta_loss = 695.9002
+BPRRecommender iter 17: loss = 30279.003339164567, delta_loss = 829.18915
+BPRRecommender iter 18: loss = 30100.52212404892, delta_loss = 178.48122
+BPRRecommender iter 19: loss = 29405.97170853408, delta_loss = 694.5504
+BPRRecommender iter 20: loss = 28823.75607650223, delta_loss = 582.21564
+BPRRecommender iter 21: loss = 28432.823034747358, delta_loss = 390.93304
+BPRRecommender iter 22: loss = 28448.4997608024, delta_loss = -15.676726
+BPRRecommender iter 23: loss = 27966.2137651038, delta_loss = 482.286
+BPRRecommender iter 24: loss = 27532.42241370155, delta_loss = 433.79135
+BPRRecommender iter 25: loss = 27673.70812846296, delta_loss = -141.28572
+BPRRecommender iter 26: loss = 27277.79147506457, delta_loss = 395.91666
+BPRRecommender iter 27: loss = 26819.497344682735, delta_loss = 458.29413
+BPRRecommender iter 28: loss = 26817.806496521684, delta_loss = 1.6908481
+BPRRecommender iter 29: loss = 26645.844152560774, delta_loss = 171.96234
+BPRRecommender iter 30: loss = 26326.389776510052, delta_loss = 319.45438
+Job Train completed.
+Job End.
+Evaluator value:RECALL top 10 is 0.18444017316998426
+Evaluator value:Novelty top 10 is 15.495596891364743
+Evaluator value:PRECISION top 10 is 0.2827147401908793
+Evaluator value:AUC top 10 is 0.9271660810227326
+Evaluator value:AP top 10 is 0.21139049648962926
+Evaluator value:NDCG top 10 is 0.34341394870974246
+Evaluator value:Entropy top 10 is 31.50423111330961
+Evaluator value:RR top 10 is 0.5926909222508371
+Result path is ../result/movielens/ml-100k-bpr-output/bpr
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+MyRecommender iter 1: loss = 65636.40768493028, delta_loss = -65636.41
+MyRecommender iter 2: loss = 65577.18314365875, delta_loss = 59.22454
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+MyRecommender iter 1: loss = 65636.40768493028, delta_loss = -65636.41
+MyRecommender iter 2: loss = 65577.18314365875, delta_loss = 59.22454
+MyRecommender iter 3: loss = 65556.13400294933, delta_loss = 21.04914
+MyRecommender iter 4: loss = 65543.29917115261, delta_loss = 12.834832
+MyRecommender iter 5: loss = 65533.50338268872, delta_loss = 9.795789
+MyRecommender iter 6: loss = 65524.8175604608, delta_loss = 8.6858225
+MyRecommender iter 7: loss = 65517.94260044797, delta_loss = 6.87496
+MyRecommender iter 8: loss = 65511.31888682015, delta_loss = 6.6237135
+MyRecommender iter 9: loss = 65505.90611326951, delta_loss = 5.4127736
+MyRecommender iter 10: loss = 65500.221004074054, delta_loss = 5.685109
+MyRecommender iter 11: loss = 65496.03291913054, delta_loss = 4.188085
+MyRecommender iter 12: loss = 65491.10814427479, delta_loss = 4.9247746
+MyRecommender iter 13: loss = 65487.23994356688, delta_loss = 3.8682008
+MyRecommender iter 14: loss = 65483.1830252272, delta_loss = 4.056918
+MyRecommender iter 15: loss = 65479.46001475334, delta_loss = 3.7230105
+MyRecommender iter 16: loss = 65476.25198387824, delta_loss = 3.208031
+MyRecommender iter 17: loss = 65472.876761930165, delta_loss = 3.375222
+MyRecommender iter 18: loss = 65469.886137279005, delta_loss = 2.9906247
+MyRecommender iter 19: loss = 65466.90262067703, delta_loss = 2.9835167
+MyRecommender iter 20: loss = 65464.124274832284, delta_loss = 2.7783458
+MyRecommender iter 21: loss = 65461.54735794294, delta_loss = 2.576917
+MyRecommender iter 22: loss = 65459.27465633847, delta_loss = 2.2727015
+MyRecommender iter 23: loss = 65456.77145121623, delta_loss = 2.503205
+MyRecommender iter 24: loss = 65454.6802949405, delta_loss = 2.0911562
+MyRecommender iter 25: loss = 65452.15441878458, delta_loss = 2.525876
+MyRecommender iter 26: loss = 65450.22404052519, delta_loss = 1.9303783
+MyRecommender iter 27: loss = 65448.3949858591, delta_loss = 1.8290547
+MyRecommender iter 28: loss = 65446.34604580207, delta_loss = 2.04894
+MyRecommender iter 29: loss = 65444.70470450206, delta_loss = 1.6413413
+MyRecommender iter 30: loss = 65442.99275478991, delta_loss = 1.7119497
+Job Train completed.
+Job End.
+Evaluator value:Entropy top 10 is 61.324064411698615
+Evaluator value:AUC top 10 is 0.08791809439557828
+Evaluator value:RECALL top 10 is 0.024295516148572522
+Evaluator value:AP top 10 is 0.6643632277937687
+Evaluator value:Novelty top 10 is 0.0
+Evaluator value:RR top 10 is 0.8504241781548254
+Evaluator value:NDCG top 10 is 0.7837549370521975
+Evaluator value:PRECISION top 10 is 0.7994697773064646
+Result path is ../result/preference-myrec-output/myrec
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+BPRRecommender iter 1: loss = 65647.13893378338, delta_loss = -65647.14
+BPRRecommender iter 2: loss = 65623.85488197267, delta_loss = 23.284052
+BPRRecommender iter 3: loss = 65621.46130562358, delta_loss = 2.3935764
+BPRRecommender iter 4: loss = 65597.57656744175, delta_loss = 23.884739
+BPRRecommender iter 5: loss = 65585.96737363396, delta_loss = 11.609194
+BPRRecommender iter 6: loss = 65544.76755749049, delta_loss = 41.199818
+BPRRecommender iter 7: loss = 65535.663106870314, delta_loss = 9.10445
+BPRRecommender iter 8: loss = 65528.461356532265, delta_loss = 7.2017503
+BPRRecommender iter 9: loss = 65496.53082798307, delta_loss = 31.930529
+BPRRecommender iter 10: loss = 65471.4514805851, delta_loss = 25.079348
+BPRRecommender iter 11: loss = 65442.9446708994, delta_loss = 28.50681
+BPRRecommender iter 12: loss = 65397.93135065534, delta_loss = 45.01332
+BPRRecommender iter 13: loss = 65345.57212603429, delta_loss = 52.359226
+BPRRecommender iter 14: loss = 65273.16643355319, delta_loss = 72.40569
+BPRRecommender iter 15: loss = 65146.73140310409, delta_loss = 126.43503
+BPRRecommender iter 16: loss = 65010.97486828838, delta_loss = 135.75653
+BPRRecommender iter 17: loss = 64781.83296014769, delta_loss = 229.1419
+BPRRecommender iter 18: loss = 64485.469302699676, delta_loss = 296.36365
+BPRRecommender iter 19: loss = 64119.30161757736, delta_loss = 366.1677
+BPRRecommender iter 20: loss = 63695.729108445004, delta_loss = 423.5725
+BPRRecommender iter 21: loss = 63241.53948194488, delta_loss = 454.18964
+BPRRecommender iter 22: loss = 62865.21945483219, delta_loss = 376.32004
+BPRRecommender iter 23: loss = 62401.90404652411, delta_loss = 463.3154
+BPRRecommender iter 24: loss = 62189.202458008964, delta_loss = 212.70158
+BPRRecommender iter 25: loss = 62028.11175349771, delta_loss = 161.0907
+BPRRecommender iter 26: loss = 61808.231047122346, delta_loss = 219.8807
+BPRRecommender iter 27: loss = 61754.18707496485, delta_loss = 54.043972
+BPRRecommender iter 28: loss = 61616.62927706711, delta_loss = 137.5578
+BPRRecommender iter 29: loss = 61587.08988128172, delta_loss = 29.539396
+BPRRecommender iter 30: loss = 61740.267152561086, delta_loss = -153.17728
+Job Train completed.
+Job End.
+Evaluator value:RECALL top 10 is 0.030399126235351896
+Evaluator value:Novelty top 10 is 0.0
+Evaluator value:PRECISION top 10 is 1.0
+Evaluator value:AUC top 10 is 0.09116647840184548
+Evaluator value:AP top 10 is 1.0
+Evaluator value:NDCG top 10 is 1.0
+Evaluator value:Entropy top 10 is 39.524355737924054
+Evaluator value:RR top 10 is 1.0
+Result path is ../result/preference-bpr-output/bpr
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+MyRecommender iter 1: loss = 65622.28545431582, delta_loss = -65622.29
+MyRecommender iter 2: loss = 65565.12050033614, delta_loss = 57.164955
+MyRecommender iter 3: loss = 65550.51573331354, delta_loss = 14.604767
+MyRecommender iter 4: loss = 65541.217758824, delta_loss = 9.297975
+MyRecommender iter 5: loss = 65533.19721053192, delta_loss = 8.020548
+MyRecommender iter 6: loss = 65526.599997745936, delta_loss = 6.597213
+MyRecommender iter 7: loss = 65521.005024209226, delta_loss = 5.5949736
+MyRecommender iter 8: loss = 65515.557850592326, delta_loss = 5.4471736
+MyRecommender iter 9: loss = 65510.62223836213, delta_loss = 4.935612
+MyRecommender iter 10: loss = 65505.72672059108, delta_loss = 4.895518
+MyRecommender iter 11: loss = 65501.646551788726, delta_loss = 4.0801687
+MyRecommender iter 12: loss = 65497.26596778459, delta_loss = 4.3805842
+MyRecommender iter 13: loss = 65493.25671715048, delta_loss = 4.0092506
+MyRecommender iter 14: loss = 65489.44655580194, delta_loss = 3.8101614
+MyRecommender iter 15: loss = 65486.06240206866, delta_loss = 3.3841538
+MyRecommender iter 16: loss = 65482.696923039606, delta_loss = 3.365479
+MyRecommender iter 17: loss = 65478.92448468256, delta_loss = 3.7724383
+MyRecommender iter 18: loss = 65475.99263341972, delta_loss = 2.9318511
+MyRecommender iter 19: loss = 65472.954017960394, delta_loss = 3.0386155
+MyRecommender iter 20: loss = 65469.939578605066, delta_loss = 3.0144393
+MyRecommender iter 21: loss = 65467.30178977635, delta_loss = 2.6377888
+MyRecommender iter 22: loss = 65464.460823982576, delta_loss = 2.8409657
+MyRecommender iter 23: loss = 65461.93218205659, delta_loss = 2.528642
+MyRecommender iter 24: loss = 65459.38778569557, delta_loss = 2.5443964
+MyRecommender iter 25: loss = 65456.82106899419, delta_loss = 2.5667167
+MyRecommender iter 26: loss = 65454.10428834017, delta_loss = 2.7167807
+MyRecommender iter 27: loss = 65452.07147075799, delta_loss = 2.0328176
+MyRecommender iter 28: loss = 65449.83137120162, delta_loss = 2.2400997
+MyRecommender iter 29: loss = 65447.824274180086, delta_loss = 2.007097
+MyRecommender iter 30: loss = 65446.01779485109, delta_loss = 1.8064793
+Job Train completed.
+Job End.
+Evaluator value:PRECISION top 10 is 0.004665959703075292
+Evaluator value:RECALL top 10 is 0.0016291220578564542
+Evaluator value:RR top 10 is 0.010075493612078977
+Evaluator value:AUC top 10 is 0.52112244636573
+Evaluator value:AP top 10 is 0.0011312679896985304
+Evaluator value:Novelty top 10 is 67.26495137871821
+Evaluator value:Entropy top 10 is 55.25866023780302
+Evaluator value:NDCG top 10 is 0.004183980212236782
+Result path is ../result/movielens/ml-100k-myrec-output/myrec
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+MyRecommender iter 1: loss = 65636.40768493028, delta_loss = -65636.41
+MyRecommender iter 2: loss = 65577.18314365875, delta_loss = 59.22454
+MyRecommender iter 3: loss = 65556.13400294933, delta_loss = 21.04914
+MyRecommender iter 4: loss = 65543.29917115261, delta_loss = 12.834832
+MyRecommender iter 5: loss = 65533.50338268872, delta_loss = 9.795789
+MyRecommender iter 6: loss = 65524.8175604608, delta_loss = 8.6858225
+MyRecommender iter 7: loss = 65517.94260044797, delta_loss = 6.87496
+MyRecommender iter 8: loss = 65511.31888682015, delta_loss = 6.6237135
+MyRecommender iter 9: loss = 65505.90611326951, delta_loss = 5.4127736
+MyRecommender iter 10: loss = 65500.221004074054, delta_loss = 5.685109
+MyRecommender iter 11: loss = 65496.03291913054, delta_loss = 4.188085
+MyRecommender iter 12: loss = 65491.10814427479, delta_loss = 4.9247746
+MyRecommender iter 13: loss = 65487.23994356688, delta_loss = 3.8682008
+MyRecommender iter 14: loss = 65483.1830252272, delta_loss = 4.056918
+MyRecommender iter 15: loss = 65479.46001475334, delta_loss = 3.7230105
+MyRecommender iter 16: loss = 65476.25198387824, delta_loss = 3.208031
+MyRecommender iter 17: loss = 65472.876761930165, delta_loss = 3.375222
+MyRecommender iter 18: loss = 65469.886137279005, delta_loss = 2.9906247
+MyRecommender iter 19: loss = 65466.90262067703, delta_loss = 2.9835167
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+MyRecommender iter 1: loss = 65636.40768493028, delta_loss = -65636.41
+MyRecommender iter 2: loss = 65577.18314365875, delta_loss = 59.22454
+MyRecommender iter 3: loss = 65556.13400294933, delta_loss = 21.04914
+MyRecommender iter 4: loss = 65543.29917115261, delta_loss = 12.834832
+MyRecommender iter 5: loss = 65533.50338268872, delta_loss = 9.795789
+MyRecommender iter 6: loss = 65524.8175604608, delta_loss = 8.6858225
+MyRecommender iter 7: loss = 65517.94260044797, delta_loss = 6.87496
+MyRecommender iter 8: loss = 65511.31888682015, delta_loss = 6.6237135
+MyRecommender iter 9: loss = 65505.90611326951, delta_loss = 5.4127736
+MyRecommender iter 10: loss = 65500.221004074054, delta_loss = 5.685109
+MyRecommender iter 11: loss = 65496.03291913054, delta_loss = 4.188085
+MyRecommender iter 12: loss = 65491.10814427479, delta_loss = 4.9247746
+MyRecommender iter 13: loss = 65487.23994356688, delta_loss = 3.8682008
+MyRecommender iter 14: loss = 65483.1830252272, delta_loss = 4.056918
+MyRecommender iter 15: loss = 65479.46001475334, delta_loss = 3.7230105
+MyRecommender iter 16: loss = 65476.25198387824, delta_loss = 3.208031
+MyRecommender iter 17: loss = 65472.876761930165, delta_loss = 3.375222
+MyRecommender iter 18: loss = 65469.886137279005, delta_loss = 2.9906247
+MyRecommender iter 19: loss = 65466.90262067703, delta_loss = 2.9835167
+MyRecommender iter 20: loss = 65464.124274832284, delta_loss = 2.7783458
+MyRecommender iter 21: loss = 65461.54735794294, delta_loss = 2.576917
+MyRecommender iter 22: loss = 65459.27465633847, delta_loss = 2.2727015
+MyRecommender iter 23: loss = 65456.77145121623, delta_loss = 2.503205
+MyRecommender iter 24: loss = 65454.6802949405, delta_loss = 2.0911562
+MyRecommender iter 25: loss = 65452.15441878458, delta_loss = 2.525876
+MyRecommender iter 26: loss = 65450.22404052519, delta_loss = 1.9303783
+MyRecommender iter 27: loss = 65448.3949858591, delta_loss = 1.8290547
+MyRecommender iter 28: loss = 65446.34604580207, delta_loss = 2.04894
+MyRecommender iter 29: loss = 65444.70470450206, delta_loss = 1.6413413
+MyRecommender iter 30: loss = 65442.99275478991, delta_loss = 1.7119497
+Job Train completed.
+Job End.
+Evaluator value:Entropy top 10 is 61.324064411698615
+Evaluator value:AUC top 10 is 0.08791809439557828
+Evaluator value:RECALL top 10 is 0.024295516148572522
+Evaluator value:AP top 10 is 0.6643632277937687
+Evaluator value:Novelty top 10 is 0.0
+Evaluator value:RR top 10 is 0.8504241781548254
+Evaluator value:NDCG top 10 is 0.7837549370521975
+Evaluator value:PRECISION top 10 is 0.7994697773064646
+Result path is ../result/preference-myrec-output/myrec
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+BPRRecommender iter 1: loss = 65647.13893378338, delta_loss = -65647.14
+BPRRecommender iter 2: loss = 65623.85488197267, delta_loss = 23.284052
+BPRRecommender iter 3: loss = 65621.46130562358, delta_loss = 2.3935764
+BPRRecommender iter 4: loss = 65597.57656744175, delta_loss = 23.884739
+BPRRecommender iter 5: loss = 65585.96737363396, delta_loss = 11.609194
+BPRRecommender iter 6: loss = 65544.76755749049, delta_loss = 41.199818
+BPRRecommender iter 7: loss = 65535.663106870314, delta_loss = 9.10445
+BPRRecommender iter 8: loss = 65528.461356532265, delta_loss = 7.2017503
+BPRRecommender iter 9: loss = 65496.53082798307, delta_loss = 31.930529
+BPRRecommender iter 10: loss = 65471.4514805851, delta_loss = 25.079348
+BPRRecommender iter 11: loss = 65442.9446708994, delta_loss = 28.50681
+BPRRecommender iter 12: loss = 65397.93135065534, delta_loss = 45.01332
+BPRRecommender iter 13: loss = 65345.57212603429, delta_loss = 52.359226
+BPRRecommender iter 14: loss = 65273.16643355319, delta_loss = 72.40569
+BPRRecommender iter 15: loss = 65146.73140310409, delta_loss = 126.43503
+BPRRecommender iter 16: loss = 65010.97486828838, delta_loss = 135.75653
+BPRRecommender iter 17: loss = 64781.83296014769, delta_loss = 229.1419
+BPRRecommender iter 18: loss = 64485.469302699676, delta_loss = 296.36365
+BPRRecommender iter 19: loss = 64119.30161757736, delta_loss = 366.1677
+BPRRecommender iter 20: loss = 63695.729108445004, delta_loss = 423.5725
+BPRRecommender iter 21: loss = 63241.53948194488, delta_loss = 454.18964
+BPRRecommender iter 22: loss = 62865.21945483219, delta_loss = 376.32004
+BPRRecommender iter 23: loss = 62401.90404652411, delta_loss = 463.3154
+BPRRecommender iter 24: loss = 62189.202458008964, delta_loss = 212.70158
+BPRRecommender iter 25: loss = 62028.11175349771, delta_loss = 161.0907
+BPRRecommender iter 26: loss = 61808.231047122346, delta_loss = 219.8807
+BPRRecommender iter 27: loss = 61754.18707496485, delta_loss = 54.043972
+BPRRecommender iter 28: loss = 61616.62927706711, delta_loss = 137.5578
+BPRRecommender iter 29: loss = 61587.08988128172, delta_loss = 29.539396
+BPRRecommender iter 30: loss = 61740.267152561086, delta_loss = -153.17728
+Job Train completed.
+Job End.
+Evaluator value:RECALL top 10 is 0.030399126235351896
+Evaluator value:Novelty top 10 is 0.0
+Evaluator value:PRECISION top 10 is 1.0
+Evaluator value:AUC top 10 is 0.09116647840184548
+Evaluator value:AP top 10 is 1.0
+Evaluator value:NDCG top 10 is 1.0
+Evaluator value:Entropy top 10 is 39.524355737924054
+Evaluator value:RR top 10 is 1.0
+Result path is ../result/preference-bpr-output/bpr
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+MyRecommender iter 1: loss = 65614.64160405149, delta_loss = -65614.64
+MyRecommender iter 2: loss = 65535.469032213274, delta_loss = 79.17257
+MyRecommender iter 3: loss = 65505.49527535838, delta_loss = 29.973757
+MyRecommender iter 4: loss = 65487.587760723465, delta_loss = 17.907515
+MyRecommender iter 5: loss = 65475.1290896927, delta_loss = 12.458671
+MyRecommender iter 6: loss = 65464.4081702659, delta_loss = 10.72092
+MyRecommender iter 7: loss = 65456.436380046835, delta_loss = 7.9717903
+MyRecommender iter 8: loss = 65448.88726745264, delta_loss = 7.549113
+MyRecommender iter 9: loss = 65442.95531402897, delta_loss = 5.9319534
+MyRecommender iter 10: loss = 65437.2741616035, delta_loss = 5.6811523
+MyRecommender iter 11: loss = 65432.52237496948, delta_loss = 4.7517867
+MyRecommender iter 12: loss = 65427.93036299857, delta_loss = 4.592012
+MyRecommender iter 13: loss = 65424.09999994245, delta_loss = 3.830363
+MyRecommender iter 14: loss = 65420.184762922465, delta_loss = 3.915237
+MyRecommender iter 15: loss = 65416.77782621746, delta_loss = 3.4069366
+MyRecommender iter 16: loss = 65413.67377588628, delta_loss = 3.1040504
+MyRecommender iter 17: loss = 65410.42299174137, delta_loss = 3.2507842
+MyRecommender iter 18: loss = 65408.03463382679, delta_loss = 2.3883579
+MyRecommender iter 19: loss = 65405.41252181272, delta_loss = 2.622112
+MyRecommender iter 20: loss = 65403.08968225797, delta_loss = 2.3228395
+MyRecommender iter 21: loss = 65400.79361637835, delta_loss = 2.2960658
+MyRecommender iter 22: loss = 65398.8669846329, delta_loss = 1.9266317
+MyRecommender iter 23: loss = 65396.93262543123, delta_loss = 1.9343592
+MyRecommender iter 24: loss = 65395.303751116466, delta_loss = 1.6288743
+MyRecommender iter 25: loss = 65393.46965784698, delta_loss = 1.8340932
+MyRecommender iter 26: loss = 65391.944473041905, delta_loss = 1.5251848
+MyRecommender iter 27: loss = 65390.59336462432, delta_loss = 1.3511084
+MyRecommender iter 28: loss = 65388.99407197546, delta_loss = 1.5992926
+MyRecommender iter 29: loss = 65387.94970752964, delta_loss = 1.0443645
+MyRecommender iter 30: loss = 65386.758466996995, delta_loss = 1.1912405
+Job Train completed.
+Job End.
+Evaluator value:Entropy top 10 is 63.120116648835356
+Evaluator value:AUC top 10 is 0.08915207075965603
+Evaluator value:RECALL top 10 is 0.026618621243689234
+Evaluator value:AP top 10 is 0.7993610395731283
+Evaluator value:Novelty top 10 is 0.0
+Evaluator value:RR top 10 is 0.9505125486037472
+Evaluator value:NDCG top 10 is 0.8787529772622849
+Evaluator value:PRECISION top 10 is 0.8759278897136721
+Result path is ../result/preference-myrec-output/myrec
+Dataset: ../data/movielens/ml-100k
+All dataset files [..\data\movielens\ml-100k\ratings.txt]
+All dataset files size 2079173
+Now loading dataset file ratings
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 80019
+Data size of testing is 19981
+Job Setup completed.
+BPRRecommender iter 1: loss = 65597.33384025922, delta_loss = -65597.336
+BPRRecommender iter 2: loss = 65454.79038122726, delta_loss = 142.54346
+BPRRecommender iter 3: loss = 65124.048499695185, delta_loss = 330.74188
+BPRRecommender iter 4: loss = 64189.11108688194, delta_loss = 934.93744
+BPRRecommender iter 5: loss = 61338.89304512981, delta_loss = 2850.218
+BPRRecommender iter 6: loss = 56001.78186863758, delta_loss = 5337.1113
+BPRRecommender iter 7: loss = 49993.29775590468, delta_loss = 6008.484
+BPRRecommender iter 8: loss = 44847.32311067478, delta_loss = 5145.9746
+BPRRecommender iter 9: loss = 40891.05077089586, delta_loss = 3956.2725
+BPRRecommender iter 10: loss = 37991.9579380683, delta_loss = 2899.0928
+BPRRecommender iter 11: loss = 36165.9941014867, delta_loss = 1825.9639
+BPRRecommender iter 12: loss = 34311.39182967422, delta_loss = 1854.6023
+BPRRecommender iter 13: loss = 33391.193254986305, delta_loss = 920.19855
+BPRRecommender iter 14: loss = 32457.294961182204, delta_loss = 933.8983
+BPRRecommender iter 15: loss = 31804.09269752792, delta_loss = 653.2023
+BPRRecommender iter 16: loss = 31108.19246125053, delta_loss = 695.9002
+BPRRecommender iter 17: loss = 30279.003339164567, delta_loss = 829.18915
+BPRRecommender iter 18: loss = 30100.52212404892, delta_loss = 178.48122
+BPRRecommender iter 19: loss = 29405.97170853408, delta_loss = 694.5504
+BPRRecommender iter 20: loss = 28823.75607650223, delta_loss = 582.21564
+BPRRecommender iter 21: loss = 28432.823034747358, delta_loss = 390.93304
+BPRRecommender iter 22: loss = 28448.4997608024, delta_loss = -15.676726
+BPRRecommender iter 23: loss = 27966.2137651038, delta_loss = 482.286
+BPRRecommender iter 24: loss = 27532.42241370155, delta_loss = 433.79135
+BPRRecommender iter 25: loss = 27673.70812846296, delta_loss = -141.28572
+BPRRecommender iter 26: loss = 27277.79147506457, delta_loss = 395.91666
+BPRRecommender iter 27: loss = 26819.497344682735, delta_loss = 458.29413
+BPRRecommender iter 28: loss = 26817.806496521684, delta_loss = 1.6908481
+BPRRecommender iter 29: loss = 26645.844152560774, delta_loss = 171.96234
+BPRRecommender iter 30: loss = 26326.389776510052, delta_loss = 319.45438
+Job Train completed.
+Job End.
+Evaluator value:Entropy top 10 is 31.50423111330961
+Evaluator value:AUC top 10 is 0.9271660810227326
+Evaluator value:RECALL top 10 is 0.18444017316998426
+Evaluator value:AP top 10 is 0.21139049648962926
+Evaluator value:Novelty top 10 is 15.495596891364743
+Evaluator value:RR top 10 is 0.5926909222508371
+Evaluator value:NDCG top 10 is 0.34341394870974246
+Evaluator value:PRECISION top 10 is 0.2827147401908793
+Result path is ../result/movielens/ml-100k-bpr-output/bpr
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+MyRecommender iter 1: loss = 65614.64160405149, delta_loss = -65614.64
+MyRecommender iter 2: loss = 65535.469032213274, delta_loss = 79.17257
+MyRecommender iter 3: loss = 65505.49527535838, delta_loss = 29.973757
+MyRecommender iter 4: loss = 65487.587760723465, delta_loss = 17.907515
+MyRecommender iter 5: loss = 65475.1290896927, delta_loss = 12.458671
+MyRecommender iter 6: loss = 65464.4081702659, delta_loss = 10.72092
+MyRecommender iter 7: loss = 65456.436380046835, delta_loss = 7.9717903
+MyRecommender iter 8: loss = 65448.88726745264, delta_loss = 7.549113
+MyRecommender iter 9: loss = 65442.95531402897, delta_loss = 5.9319534
+MyRecommender iter 10: loss = 65437.2741616035, delta_loss = 5.6811523
+MyRecommender iter 11: loss = 65432.52237496948, delta_loss = 4.7517867
+MyRecommender iter 12: loss = 65427.93036299857, delta_loss = 4.592012
+MyRecommender iter 13: loss = 65424.09999994245, delta_loss = 3.830363
+MyRecommender iter 14: loss = 65420.184762922465, delta_loss = 3.915237
+MyRecommender iter 15: loss = 65416.77782621746, delta_loss = 3.4069366
+MyRecommender iter 16: loss = 65413.67377588628, delta_loss = 3.1040504
+MyRecommender iter 17: loss = 65410.42299174137, delta_loss = 3.2507842
+MyRecommender iter 18: loss = 65408.03463382679, delta_loss = 2.3883579
+MyRecommender iter 19: loss = 65405.41252181272, delta_loss = 2.622112
+MyRecommender iter 20: loss = 65403.08968225797, delta_loss = 2.3228395
+MyRecommender iter 21: loss = 65400.79361637835, delta_loss = 2.2960658
+MyRecommender iter 22: loss = 65398.8669846329, delta_loss = 1.9266317
+MyRecommender iter 23: loss = 65396.93262543123, delta_loss = 1.9343592
+MyRecommender iter 24: loss = 65395.303751116466, delta_loss = 1.6288743
+MyRecommender iter 25: loss = 65393.46965784698, delta_loss = 1.8340932
+MyRecommender iter 26: loss = 65391.944473041905, delta_loss = 1.5251848
+MyRecommender iter 27: loss = 65390.59336462432, delta_loss = 1.3511084
+MyRecommender iter 28: loss = 65388.99407197546, delta_loss = 1.5992926
+MyRecommender iter 29: loss = 65387.94970752964, delta_loss = 1.0443645
+MyRecommender iter 30: loss = 65386.758466996995, delta_loss = 1.1912405
+Job Train completed.
+Job End.
+Evaluator value:Entropy top 10 is 63.120116648835356
+Evaluator value:AUC top 10 is 0.08915207075965603
+Evaluator value:RECALL top 10 is 0.026618621243689234
+Evaluator value:AP top 10 is 0.7993610395731283
+Evaluator value:Novelty top 10 is 0.0
+Evaluator value:RR top 10 is 0.9505125486037472
+Evaluator value:NDCG top 10 is 0.8787529772622849
+Evaluator value:PRECISION top 10 is 0.8759278897136721
+Result path is ../result/preference-myrec-output/myrec
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+MyRecommender iter 1: loss = 65733.08890613251, delta_loss = -65733.086
+MyRecommender iter 2: loss = 65677.80711197553, delta_loss = 55.281796
+MyRecommender iter 3: loss = 65570.54689692294, delta_loss = 107.260216
+MyRecommender iter 4: loss = 65411.5717305925, delta_loss = 158.97517
+MyRecommender iter 5: loss = 65009.99850015861, delta_loss = 401.57324
+MyRecommender iter 6: loss = 64510.05036778285, delta_loss = 499.94812
+MyRecommender iter 7: loss = 64337.11420027363, delta_loss = 172.93617
+MyRecommender iter 8: loss = 64081.22178381859, delta_loss = 255.89241
+MyRecommender iter 9: loss = 63665.40902870814, delta_loss = 415.81274
+MyRecommender iter 10: loss = 63040.47573921235, delta_loss = 624.9333
+MyRecommender iter 11: loss = 61986.600021389975, delta_loss = 1053.8757
+MyRecommender iter 12: loss = 60546.42317764211, delta_loss = 1440.1769
+MyRecommender iter 13: loss = 58960.178435888956, delta_loss = 1586.2448
+MyRecommender iter 14: loss = 57723.69694814894, delta_loss = 1236.4814
+MyRecommender iter 15: loss = 55768.04414498113, delta_loss = 1955.6528
+MyRecommender iter 16: loss = 53068.92841422654, delta_loss = 2699.1157
+MyRecommender iter 17: loss = 49853.805105117695, delta_loss = 3215.1233
+MyRecommender iter 18: loss = 47377.90264158886, delta_loss = 2475.9023
+MyRecommender iter 19: loss = 44363.596419921545, delta_loss = 3014.3062
+MyRecommender iter 20: loss = 41756.632735479245, delta_loss = 2606.9636
+MyRecommender iter 21: loss = 39065.309033292964, delta_loss = 2691.3237
+MyRecommender iter 22: loss = 36505.20279950943, delta_loss = 2560.1062
+MyRecommender iter 23: loss = 34847.27899317238, delta_loss = 1657.9238
+MyRecommender iter 24: loss = 32878.294369217794, delta_loss = 1968.9846
+MyRecommender iter 25: loss = 31054.081913441463, delta_loss = 1824.2124
+MyRecommender iter 26: loss = 29027.87934859489, delta_loss = 2026.2025
+MyRecommender iter 27: loss = 26626.12970466101, delta_loss = 2401.7498
+MyRecommender iter 28: loss = 24441.92617287191, delta_loss = 2184.2036
+MyRecommender iter 29: loss = 22290.453519400584, delta_loss = 2151.4727
+MyRecommender iter 30: loss = 20585.13290176485, delta_loss = 1705.3206
+Job Train completed.
+Job End.
+Evaluator value:Entropy top 10 is 51.07090858452245
+Evaluator value:AUC top 10 is 0.09112695329776783
+Evaluator value:RECALL top 10 is 0.030310222376285164
+Evaluator value:AP top 10 is 0.9967480095608406
+Evaluator value:Novelty top 10 is 0.0
+Evaluator value:RR top 10 is 1.0
+Evaluator value:NDCG top 10 is 0.9980578637080806
+Evaluator value:PRECISION top 10 is 0.9971367974549307
+Result path is ../result/preference-myrec-output/myrec
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+MyRecommender iter 1: loss = 65733.08890613251, delta_loss = -65733.086
+MyRecommender iter 2: loss = 65677.80711197553, delta_loss = 55.281796
+MyRecommender iter 3: loss = 65570.54689692294, delta_loss = 107.260216
+MyRecommender iter 4: loss = 65411.5717305925, delta_loss = 158.97517
+MyRecommender iter 5: loss = 65009.99850015861, delta_loss = 401.57324
+MyRecommender iter 6: loss = 64510.05036778285, delta_loss = 499.94812
+MyRecommender iter 7: loss = 64337.11420027363, delta_loss = 172.93617
+MyRecommender iter 8: loss = 64081.22178381859, delta_loss = 255.89241
+MyRecommender iter 9: loss = 63665.40902870814, delta_loss = 415.81274
+MyRecommender iter 10: loss = 63040.47573921235, delta_loss = 624.9333
+MyRecommender iter 11: loss = 61986.600021389975, delta_loss = 1053.8757
+MyRecommender iter 12: loss = 60546.42317764211, delta_loss = 1440.1769
+MyRecommender iter 13: loss = 58960.178435888956, delta_loss = 1586.2448
+MyRecommender iter 14: loss = 57723.69694814894, delta_loss = 1236.4814
+MyRecommender iter 15: loss = 55768.04414498113, delta_loss = 1955.6528
+MyRecommender iter 16: loss = 53068.92841422654, delta_loss = 2699.1157
+MyRecommender iter 17: loss = 49853.805105117695, delta_loss = 3215.1233
+MyRecommender iter 18: loss = 47377.90264158886, delta_loss = 2475.9023
+MyRecommender iter 19: loss = 44363.596419921545, delta_loss = 3014.3062
+MyRecommender iter 20: loss = 41756.632735479245, delta_loss = 2606.9636
+MyRecommender iter 21: loss = 39065.309033292964, delta_loss = 2691.3237
+MyRecommender iter 22: loss = 36505.20279950943, delta_loss = 2560.1062
+MyRecommender iter 23: loss = 34847.27899317238, delta_loss = 1657.9238
+MyRecommender iter 24: loss = 32878.294369217794, delta_loss = 1968.9846
+MyRecommender iter 25: loss = 31054.081913441463, delta_loss = 1824.2124
+MyRecommender iter 26: loss = 29027.87934859489, delta_loss = 2026.2025
+MyRecommender iter 27: loss = 26626.12970466101, delta_loss = 2401.7498
+MyRecommender iter 28: loss = 24441.92617287191, delta_loss = 2184.2036
+MyRecommender iter 29: loss = 22290.453519400584, delta_loss = 2151.4727
+MyRecommender iter 30: loss = 20585.13290176485, delta_loss = 1705.3206
+MyRecommender iter 31: loss = 18827.491354338516, delta_loss = 1757.6416
+MyRecommender iter 32: loss = 17469.797215000253, delta_loss = 1357.6941
+MyRecommender iter 33: loss = 16488.41324072199, delta_loss = 981.384
+MyRecommender iter 34: loss = 15817.812862542687, delta_loss = 670.6004
+MyRecommender iter 35: loss = 15404.1158020605, delta_loss = 413.69705
+MyRecommender iter 36: loss = 14882.583163657446, delta_loss = 521.53265
+MyRecommender iter 37: loss = 14529.002623516097, delta_loss = 353.58054
+MyRecommender iter 38: loss = 14222.808656228593, delta_loss = 306.19397
+MyRecommender iter 39: loss = 13718.091761034306, delta_loss = 504.7169
+MyRecommender iter 40: loss = 13330.248991947745, delta_loss = 387.84277
+MyRecommender iter 41: loss = 13047.380906763263, delta_loss = 282.86807
+MyRecommender iter 42: loss = 12630.683380861725, delta_loss = 416.69754
+MyRecommender iter 43: loss = 12519.229106548924, delta_loss = 111.45428
+MyRecommender iter 44: loss = 12255.75805379852, delta_loss = 263.47104
+MyRecommender iter 45: loss = 12139.026169832734, delta_loss = 116.73188
+MyRecommender iter 46: loss = 12011.723280061751, delta_loss = 127.30289
+MyRecommender iter 47: loss = 11865.96382444154, delta_loss = 145.75946
+MyRecommender iter 48: loss = 11858.17669997936, delta_loss = 7.7871246
+MyRecommender iter 49: loss = 11835.740537652759, delta_loss = 22.436163
+MyRecommender iter 50: loss = 11696.929718066809, delta_loss = 138.81082
+MyRecommender iter 51: loss = 11676.516935421248, delta_loss = 20.412783
+MyRecommender iter 52: loss = 11611.361857660102, delta_loss = 65.155075
+MyRecommender iter 53: loss = 11624.577797199572, delta_loss = -13.2159395
+MyRecommender iter 54: loss = 11543.141782821136, delta_loss = 81.43601
+MyRecommender iter 55: loss = 11559.540214596636, delta_loss = -16.398432
+MyRecommender iter 56: loss = 11483.447747466302, delta_loss = 76.09247
+MyRecommender iter 57: loss = 11440.302982289404, delta_loss = 43.144764
+MyRecommender iter 58: loss = 11379.686174943163, delta_loss = 60.616806
+MyRecommender iter 59: loss = 11345.967645857323, delta_loss = 33.71853
+MyRecommender iter 60: loss = 11372.087573381123, delta_loss = -26.119928
+MyRecommender iter 61: loss = 11270.867485598597, delta_loss = 101.220085
+MyRecommender iter 62: loss = 11280.858067085752, delta_loss = -9.9905815
+MyRecommender iter 63: loss = 11208.675183047179, delta_loss = 72.182884
+MyRecommender iter 64: loss = 11238.83884647049, delta_loss = -30.163664
+MyRecommender iter 65: loss = 11216.268146796696, delta_loss = 22.5707
+MyRecommender iter 66: loss = 11155.77274983039, delta_loss = 60.495396
+MyRecommender iter 67: loss = 11120.732488850965, delta_loss = 35.04026
+MyRecommender iter 68: loss = 11113.952655432788, delta_loss = 6.7798333
+MyRecommender iter 69: loss = 11097.121066816013, delta_loss = 16.831589
+MyRecommender iter 70: loss = 11055.710992119924, delta_loss = 41.410076
+MyRecommender iter 71: loss = 10977.491902167, delta_loss = 78.21909
+MyRecommender iter 72: loss = 10994.335616283422, delta_loss = -16.843714
+MyRecommender iter 73: loss = 10998.734115548375, delta_loss = -4.3984995
+MyRecommender iter 74: loss = 10954.886670115053, delta_loss = 43.847446
+MyRecommender iter 75: loss = 10902.9468994959, delta_loss = 51.93977
+MyRecommender iter 76: loss = 10876.838076923763, delta_loss = 26.108822
+MyRecommender iter 77: loss = 10852.791966770657, delta_loss = 24.04611
+MyRecommender iter 78: loss = 10832.64661479982, delta_loss = 20.145351
+MyRecommender iter 79: loss = 10796.607901724083, delta_loss = 36.03871
+MyRecommender iter 80: loss = 10830.688464786484, delta_loss = -34.080563
+MyRecommender iter 81: loss = 10784.238737822141, delta_loss = 46.449726
+MyRecommender iter 82: loss = 10816.852256183332, delta_loss = -32.613518
+MyRecommender iter 83: loss = 10781.790003808212, delta_loss = 35.062252
+MyRecommender iter 84: loss = 10812.298299396896, delta_loss = -30.508295
+MyRecommender iter 85: loss = 10746.308471242884, delta_loss = 65.98983
+MyRecommender iter 86: loss = 10736.308924141444, delta_loss = 9.999547
+MyRecommender iter 87: loss = 10713.309365088378, delta_loss = 22.99956
+MyRecommender iter 88: loss = 10770.021584429553, delta_loss = -56.71222
+MyRecommender iter 89: loss = 10714.444997686724, delta_loss = 55.576588
+MyRecommender iter 90: loss = 10689.266792449755, delta_loss = 25.178205
+MyRecommender iter 91: loss = 10699.356162055008, delta_loss = -10.08937
+MyRecommender iter 92: loss = 10726.133501961891, delta_loss = -26.77734
+MyRecommender iter 93: loss = 10713.309708801973, delta_loss = 12.823793
+MyRecommender iter 94: loss = 10673.366933827994, delta_loss = 39.942776
+MyRecommender iter 95: loss = 10669.48067107895, delta_loss = 3.8862627
+MyRecommender iter 96: loss = 10612.037254040973, delta_loss = 57.443417
+MyRecommender iter 97: loss = 10661.51986377477, delta_loss = -49.48261
+MyRecommender iter 98: loss = 10662.388462426161, delta_loss = -0.86859864
+MyRecommender iter 99: loss = 10668.24275681131, delta_loss = -5.8542943
+MyRecommender iter 100: loss = 10624.093948438951, delta_loss = 44.148808
+MyRecommender iter 101: loss = 10627.13008279142, delta_loss = -3.0361342
+MyRecommender iter 102: loss = 10615.048565044268, delta_loss = 12.081518
+MyRecommender iter 103: loss = 10610.36192543814, delta_loss = 4.68664
+MyRecommender iter 104: loss = 10559.00809546551, delta_loss = 51.35383
+MyRecommender iter 105: loss = 10585.314204244723, delta_loss = -26.306108
+MyRecommender iter 106: loss = 10522.563286196055, delta_loss = 62.75092
+MyRecommender iter 107: loss = 10509.718955168893, delta_loss = 12.844331
+MyRecommender iter 108: loss = 10509.200555946538, delta_loss = 0.51839924
+MyRecommender iter 109: loss = 10522.734077255802, delta_loss = -13.533522
+MyRecommender iter 110: loss = 10513.409351988143, delta_loss = 9.324725
+MyRecommender iter 111: loss = 10478.137598480258, delta_loss = 35.271755
+MyRecommender iter 112: loss = 10481.043743862865, delta_loss = -2.9061453
+MyRecommender iter 113: loss = 10497.34089080152, delta_loss = -16.297148
+MyRecommender iter 114: loss = 10498.712642874672, delta_loss = -1.371752
+MyRecommender iter 115: loss = 10496.20778209551, delta_loss = 2.5048609
+MyRecommender iter 116: loss = 10474.947473412041, delta_loss = 21.26031
+MyRecommender iter 117: loss = 10482.00251383364, delta_loss = -7.0550404
+MyRecommender iter 118: loss = 10437.489856871329, delta_loss = 44.512657
+MyRecommender iter 119: loss = 10478.840392354121, delta_loss = -41.350536
+MyRecommender iter 120: loss = 10402.213482369543, delta_loss = 76.62691
+MyRecommender iter 121: loss = 10457.184563993347, delta_loss = -54.97108
+MyRecommender iter 122: loss = 10440.478422401704, delta_loss = 16.706142
+MyRecommender iter 123: loss = 10451.73874662339, delta_loss = -11.2603245
+MyRecommender iter 124: loss = 10430.548088826295, delta_loss = 21.190659
+MyRecommender iter 125: loss = 10408.90468362229, delta_loss = 21.643406
+MyRecommender iter 126: loss = 10441.152260530049, delta_loss = -32.247578
+MyRecommender iter 127: loss = 10433.147345989371, delta_loss = 8.004914
+MyRecommender iter 128: loss = 10445.551243411623, delta_loss = -12.403897
+MyRecommender iter 129: loss = 10408.725230005213, delta_loss = 36.82601
+MyRecommender iter 130: loss = 10436.721473639167, delta_loss = -27.996244
+MyRecommender iter 131: loss = 10398.284186127901, delta_loss = 38.437286
+MyRecommender iter 132: loss = 10442.594350263664, delta_loss = -44.310165
+MyRecommender iter 133: loss = 10391.594116396185, delta_loss = 51.000233
+MyRecommender iter 134: loss = 10397.22867887961, delta_loss = -5.6345625
+MyRecommender iter 135: loss = 10442.245572741085, delta_loss = -45.016895
+MyRecommender iter 136: loss = 10378.281243674743, delta_loss = 63.96433
+MyRecommender iter 137: loss = 10399.953068217783, delta_loss = -21.671825
+MyRecommender iter 138: loss = 10437.734658149226, delta_loss = -37.78159
+MyRecommender iter 139: loss = 10421.884068012068, delta_loss = 15.85059
+MyRecommender iter 140: loss = 10378.589900214934, delta_loss = 43.294167
+MyRecommender iter 141: loss = 10387.53015162184, delta_loss = -8.940251
+MyRecommender iter 142: loss = 10373.59513055164, delta_loss = 13.935021
+MyRecommender iter 143: loss = 10380.992029286672, delta_loss = -7.3968987
+MyRecommender iter 144: loss = 10403.826320740609, delta_loss = -22.834291
+MyRecommender iter 145: loss = 10397.552390739284, delta_loss = 6.27393
+MyRecommender iter 146: loss = 10385.148334085237, delta_loss = 12.404057
+MyRecommender iter 147: loss = 10374.252860699575, delta_loss = 10.8954735
+MyRecommender iter 148: loss = 10423.210038100457, delta_loss = -48.957176
+MyRecommender iter 149: loss = 10389.879888348567, delta_loss = 33.33015
+MyRecommender iter 150: loss = 10408.647624657973, delta_loss = -18.767736
+MyRecommender iter 151: loss = 10366.761832466236, delta_loss = 41.88579
+MyRecommender iter 152: loss = 10387.520160419828, delta_loss = -20.758327
+MyRecommender iter 153: loss = 10390.786332779096, delta_loss = -3.2661724
+MyRecommender iter 154: loss = 10379.022779290106, delta_loss = 11.763554
+MyRecommender iter 155: loss = 10360.821722667255, delta_loss = 18.201057
+MyRecommender iter 156: loss = 10373.469388351477, delta_loss = -12.647666
+MyRecommender iter 157: loss = 10357.76890714139, delta_loss = 15.700481
+MyRecommender iter 158: loss = 10386.413649966453, delta_loss = -28.644743
+MyRecommender iter 159: loss = 10351.39627186758, delta_loss = 35.01738
+MyRecommender iter 160: loss = 10394.242659394122, delta_loss = -42.846386
+MyRecommender iter 161: loss = 10311.142079897383, delta_loss = 83.10058
+MyRecommender iter 162: loss = 10328.633673010789, delta_loss = -17.491592
+MyRecommender iter 163: loss = 10358.261441531424, delta_loss = -29.62777
+MyRecommender iter 164: loss = 10307.85877741958, delta_loss = 50.402664
+MyRecommender iter 165: loss = 10349.279316984774, delta_loss = -41.42054
+MyRecommender iter 166: loss = 10359.461708462126, delta_loss = -10.182391
+MyRecommender iter 167: loss = 10337.21773210521, delta_loss = 22.243977
+MyRecommender iter 168: loss = 10342.945485155717, delta_loss = -5.727753
+MyRecommender iter 169: loss = 10324.941216957544, delta_loss = 18.004269
+MyRecommender iter 170: loss = 10340.457845582865, delta_loss = -15.516628
+MyRecommender iter 171: loss = 10339.80352509351, delta_loss = 0.6543205
+MyRecommender iter 172: loss = 10339.018428718406, delta_loss = 0.78509635
+MyRecommender iter 173: loss = 10346.713670202837, delta_loss = -7.6952415
+MyRecommender iter 174: loss = 10315.991189262233, delta_loss = 30.72248
+MyRecommender iter 175: loss = 10347.53949384769, delta_loss = -31.548306
+MyRecommender iter 176: loss = 10355.847729933394, delta_loss = -8.308236
+MyRecommender iter 177: loss = 10343.978471374969, delta_loss = 11.869259
+MyRecommender iter 178: loss = 10309.826934493074, delta_loss = 34.151535
+MyRecommender iter 179: loss = 10322.146769599163, delta_loss = -12.319835
+MyRecommender iter 180: loss = 10318.229469604645, delta_loss = 3.9173
+MyRecommender iter 181: loss = 10313.57123768907, delta_loss = 4.6582317
+MyRecommender iter 182: loss = 10336.443004641385, delta_loss = -22.871767
+MyRecommender iter 183: loss = 10375.544234760328, delta_loss = -39.10123
+MyRecommender iter 184: loss = 10368.23942627394, delta_loss = 7.3048086
+MyRecommender iter 185: loss = 10327.919241706359, delta_loss = 40.320183
+MyRecommender iter 186: loss = 10341.154523582478, delta_loss = -13.235282
+MyRecommender iter 187: loss = 10327.715041942787, delta_loss = 13.439482
+MyRecommender iter 188: loss = 10345.880195921574, delta_loss = -18.165154
+MyRecommender iter 189: loss = 10362.496388393392, delta_loss = -16.616192
+MyRecommender iter 190: loss = 10322.266291762688, delta_loss = 40.230095
+MyRecommender iter 191: loss = 10307.458371377428, delta_loss = 14.80792
+MyRecommender iter 192: loss = 10344.425479096084, delta_loss = -36.967106
+MyRecommender iter 193: loss = 10367.034463058264, delta_loss = -22.608984
+MyRecommender iter 194: loss = 10343.018641571829, delta_loss = 24.015821
+MyRecommender iter 195: loss = 10325.987637687398, delta_loss = 17.031004
+MyRecommender iter 196: loss = 10289.042580783736, delta_loss = 36.945057
+MyRecommender iter 197: loss = 10296.074599532747, delta_loss = -7.0320187
+MyRecommender iter 198: loss = 10288.624893843738, delta_loss = 7.4497056
+MyRecommender iter 199: loss = 10352.804231607784, delta_loss = -64.17934
+MyRecommender iter 200: loss = 10313.483985549876, delta_loss = 39.320248
+MyRecommender iter 201: loss = 10314.35137093053, delta_loss = -0.8673854
+MyRecommender iter 202: loss = 10292.982190152958, delta_loss = 21.36918
+MyRecommender iter 203: loss = 10235.985581630974, delta_loss = 56.99661
+MyRecommender iter 204: loss = 10228.661064155782, delta_loss = 7.3245173
+MyRecommender iter 205: loss = 10223.954831699302, delta_loss = 4.7062325
+MyRecommender iter 206: loss = 10193.648888180012, delta_loss = 30.305944
+MyRecommender iter 207: loss = 10220.737206791711, delta_loss = -27.088318
+MyRecommender iter 208: loss = 10223.830683846949, delta_loss = -3.093477
+MyRecommender iter 209: loss = 10215.514670945313, delta_loss = 8.316013
+MyRecommender iter 210: loss = 10220.351039984744, delta_loss = -4.836369
+MyRecommender iter 211: loss = 10183.008936911954, delta_loss = 37.342102
+MyRecommender iter 212: loss = 10181.069437511253, delta_loss = 1.9394994
+MyRecommender iter 213: loss = 10181.321084071107, delta_loss = -0.25164655
+MyRecommender iter 214: loss = 10192.503242433653, delta_loss = -11.182158
+MyRecommender iter 215: loss = 10206.06950833442, delta_loss = -13.566266
+MyRecommender iter 216: loss = 10231.779964454832, delta_loss = -25.710457
+MyRecommender iter 217: loss = 10232.208485323694, delta_loss = -0.42852086
+MyRecommender iter 218: loss = 10204.507110073773, delta_loss = 27.701376
+MyRecommender iter 219: loss = 10164.494578218999, delta_loss = 40.01253
+MyRecommender iter 220: loss = 10159.237594533897, delta_loss = 5.2569838
+MyRecommender iter 221: loss = 10192.734298477842, delta_loss = -33.496704
+MyRecommender iter 222: loss = 10173.412918977348, delta_loss = 19.321379
+MyRecommender iter 223: loss = 10162.729550798667, delta_loss = 10.683368
+MyRecommender iter 224: loss = 10177.120194940144, delta_loss = -14.390644
+MyRecommender iter 225: loss = 10193.198858147396, delta_loss = -16.078663
+MyRecommender iter 226: loss = 10180.531006864776, delta_loss = 12.667851
+MyRecommender iter 227: loss = 10194.558120300142, delta_loss = -14.027113
+MyRecommender iter 228: loss = 10210.337876732841, delta_loss = -15.779757
+MyRecommender iter 229: loss = 10200.07097175688, delta_loss = 10.266905
+MyRecommender iter 230: loss = 10179.323006789784, delta_loss = 20.747965
+MyRecommender iter 231: loss = 10184.922487676895, delta_loss = -5.599481
+MyRecommender iter 232: loss = 10160.465385034933, delta_loss = 24.457102
+MyRecommender iter 233: loss = 10172.452265948114, delta_loss = -11.986881
+MyRecommender iter 234: loss = 10186.624970474326, delta_loss = -14.172705
+MyRecommender iter 235: loss = 10173.789363309663, delta_loss = 12.835608
+MyRecommender iter 236: loss = 10158.6619472441, delta_loss = 15.127416
+MyRecommender iter 237: loss = 10185.403945899148, delta_loss = -26.741999
+MyRecommender iter 238: loss = 10191.944447991682, delta_loss = -6.540502
+MyRecommender iter 239: loss = 10166.48548824287, delta_loss = 25.45896
+MyRecommender iter 240: loss = 10166.079587111466, delta_loss = 0.40590113
+MyRecommender iter 241: loss = 10199.772588638081, delta_loss = -33.693
+MyRecommender iter 242: loss = 10157.78521065303, delta_loss = 41.987377
+MyRecommender iter 243: loss = 10144.281448519287, delta_loss = 13.503762
+MyRecommender iter 244: loss = 10174.053777808727, delta_loss = -29.77233
+MyRecommender iter 245: loss = 10165.629800562481, delta_loss = 8.423977
+MyRecommender iter 246: loss = 10180.494831263404, delta_loss = -14.86503
+MyRecommender iter 247: loss = 10157.720258476389, delta_loss = 22.774572
+MyRecommender iter 248: loss = 10139.0438573422, delta_loss = 18.676401
+MyRecommender iter 249: loss = 10174.645539149775, delta_loss = -35.60168
+MyRecommender iter 250: loss = 10158.986174869104, delta_loss = 15.659365
+MyRecommender iter 251: loss = 10157.747839285379, delta_loss = 1.2383356
+MyRecommender iter 252: loss = 10155.580983818321, delta_loss = 2.1668556
+MyRecommender iter 253: loss = 10159.980032866382, delta_loss = -4.3990493
+MyRecommender iter 254: loss = 10153.02527843213, delta_loss = 6.9547544
+MyRecommender iter 255: loss = 10138.998373374428, delta_loss = 14.026905
+MyRecommender iter 256: loss = 10129.896873558453, delta_loss = 9.1015
+MyRecommender iter 257: loss = 10128.280782679321, delta_loss = 1.6160909
+MyRecommender iter 258: loss = 10140.661660665059, delta_loss = -12.380878
+MyRecommender iter 259: loss = 10161.239283587696, delta_loss = -20.577623
+MyRecommender iter 260: loss = 10136.647383545725, delta_loss = 24.5919
+MyRecommender iter 261: loss = 10136.34632728969, delta_loss = 0.30105627
+MyRecommender iter 262: loss = 10141.995116236401, delta_loss = -5.648789
+MyRecommender iter 263: loss = 10129.139333037461, delta_loss = 12.855783
+MyRecommender iter 264: loss = 10130.984038966064, delta_loss = -1.8447059
+MyRecommender iter 265: loss = 10152.506643697294, delta_loss = -21.522604
+MyRecommender iter 266: loss = 10148.361974252017, delta_loss = 4.1446695
+MyRecommender iter 267: loss = 10160.77884843118, delta_loss = -12.416874
+MyRecommender iter 268: loss = 10152.736860967165, delta_loss = 8.041987
+MyRecommender iter 269: loss = 10139.427215022264, delta_loss = 13.309646
+MyRecommender iter 270: loss = 10158.39119774454, delta_loss = -18.963984
+MyRecommender iter 271: loss = 10161.006082926408, delta_loss = -2.614885
+MyRecommender iter 272: loss = 10163.967348108146, delta_loss = -2.961265
+MyRecommender iter 273: loss = 10170.324725689283, delta_loss = -6.3573775
+MyRecommender iter 274: loss = 10146.166299741924, delta_loss = 24.158426
+MyRecommender iter 275: loss = 10171.179467943077, delta_loss = -25.013168
+MyRecommender iter 276: loss = 10131.012274267148, delta_loss = 40.167194
+MyRecommender iter 277: loss = 10167.80010855433, delta_loss = -36.787834
+MyRecommender iter 278: loss = 10123.02293034098, delta_loss = 44.77718
+MyRecommender iter 279: loss = 10110.912810581229, delta_loss = 12.11012
+MyRecommender iter 280: loss = 10162.902055416664, delta_loss = -51.989246
+MyRecommender iter 281: loss = 10138.070143513656, delta_loss = 24.831911
+MyRecommender iter 282: loss = 10142.198406886104, delta_loss = -4.1282635
+MyRecommender iter 283: loss = 10136.055634440003, delta_loss = 6.1427727
+MyRecommender iter 284: loss = 10111.940896894994, delta_loss = 24.114738
+MyRecommender iter 285: loss = 10122.053737207243, delta_loss = -10.112841
+MyRecommender iter 286: loss = 10135.799967794586, delta_loss = -13.74623
+MyRecommender iter 287: loss = 10140.104177561787, delta_loss = -4.3042097
+MyRecommender iter 288: loss = 10118.231365332715, delta_loss = 21.872812
+MyRecommender iter 289: loss = 10123.59663070251, delta_loss = -5.3652654
+MyRecommender iter 290: loss = 10161.795277359955, delta_loss = -38.198647
+MyRecommender iter 291: loss = 10131.76788687047, delta_loss = 30.027391
+MyRecommender iter 292: loss = 10106.4813536771, delta_loss = 25.286533
+MyRecommender iter 293: loss = 10131.22972881568, delta_loss = -24.748375
+MyRecommender iter 294: loss = 10115.289748428828, delta_loss = 15.9399805
+MyRecommender iter 295: loss = 10153.159690348515, delta_loss = -37.86994
+MyRecommender iter 296: loss = 10156.79719033985, delta_loss = -3.6375
+MyRecommender iter 297: loss = 10161.469485527237, delta_loss = -4.672295
+MyRecommender iter 298: loss = 10132.56146630222, delta_loss = 28.90802
+MyRecommender iter 299: loss = 10162.866907755093, delta_loss = -30.30544
+MyRecommender iter 300: loss = 10149.160595707846, delta_loss = 13.706312
+Job Train completed.
+Job End.
+Evaluator value:Entropy top 10 is 60.54653989092917
+Evaluator value:AUC top 10 is 0.09116647840184548
+Evaluator value:RECALL top 10 is 0.030399126235351896
+Evaluator value:AP top 10 is 1.0
+Evaluator value:Novelty top 10 is 0.0
+Evaluator value:RR top 10 is 1.0
+Evaluator value:NDCG top 10 is 1.0
+Evaluator value:PRECISION top 10 is 1.0
+Result path is ../result/preference-myrec-output/myrec
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+MyRecommender iter 1: loss = 65425.27499742757, delta_loss = -65425.273
+MyRecommender iter 2: loss = 65394.67882870643, delta_loss = 30.596169
+MyRecommender iter 3: loss = 65187.22660948041, delta_loss = 207.45222
+MyRecommender iter 4: loss = 64596.75021201124, delta_loss = 590.4764
+MyRecommender iter 5: loss = 62568.224383059256, delta_loss = 2028.5259
+MyRecommender iter 6: loss = 59387.37699971972, delta_loss = 3180.8474
+MyRecommender iter 7: loss = 55113.68492130748, delta_loss = 4273.692
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+MyRecommender iter 1: loss = 64755.65483113051, delta_loss = -64755.656
+MyRecommender iter 2: loss = 53377.277614154096, delta_loss = 11378.377
+MyRecommender iter 3: loss = 30906.827438479126, delta_loss = 22470.45
+MyRecommender iter 4: loss = 16825.027889747245, delta_loss = 14081.8
+MyRecommender iter 5: loss = 14091.607049989107, delta_loss = 2733.421
+MyRecommender iter 6: loss = NaN, delta_loss = NaN
+Dataset: ../data/preference
+All dataset files [..\data\preference\u1_OCCF.txt]
+All dataset files size 33978269
+Now loading dataset file u1_OCCF
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1245002
+Data size of testing is 310948
+Job Setup completed.
+MyRecommender iter 1: loss = 65733.08890613251, delta_loss = -65733.086
+MyRecommender iter 2: loss = 65677.80711197553, delta_loss = 55.281796
+MyRecommender iter 3: loss = 65570.54689692294, delta_loss = 107.260216
+MyRecommender iter 4: loss = 65411.5717305925, delta_loss = 158.97517
+MyRecommender iter 5: loss = 65009.99850015861, delta_loss = 401.57324
+MyRecommender iter 6: loss = 64510.05036778285, delta_loss = 499.94812
+MyRecommender iter 7: loss = 64337.11420027363, delta_loss = 172.93617
+MyRecommender iter 8: loss = 64081.22178381859, delta_loss = 255.89241
+MyRecommender iter 9: loss = 63665.40902870814, delta_loss = 415.81274
+MyRecommender iter 10: loss = 63040.47573921235, delta_loss = 624.9333
+MyRecommender iter 11: loss = 61986.600021389975, delta_loss = 1053.8757
+MyRecommender iter 12: loss = 60546.42317764211, delta_loss = 1440.1769
+MyRecommender iter 13: loss = 58960.178435888956, delta_loss = 1586.2448
+MyRecommender iter 14: loss = 57723.69694814894, delta_loss = 1236.4814
+MyRecommender iter 15: loss = 55768.04414498113, delta_loss = 1955.6528
+MyRecommender iter 16: loss = 53068.92841422654, delta_loss = 2699.1157
+MyRecommender iter 17: loss = 49853.805105117695, delta_loss = 3215.1233
+MyRecommender iter 18: loss = 47377.90264158886, delta_loss = 2475.9023
+MyRecommender iter 19: loss = 44363.596419921545, delta_loss = 3014.3062
+MyRecommender iter 20: loss = 41756.632735479245, delta_loss = 2606.9636
+MyRecommender iter 21: loss = 39065.309033292964, delta_loss = 2691.3237
+MyRecommender iter 22: loss = 36505.20279950943, delta_loss = 2560.1062
+MyRecommender iter 23: loss = 34847.27899317238, delta_loss = 1657.9238
+MyRecommender iter 24: loss = 32878.294369217794, delta_loss = 1968.9846
+MyRecommender iter 25: loss = 31054.081913441463, delta_loss = 1824.2124
+MyRecommender iter 26: loss = 29027.87934859489, delta_loss = 2026.2025
+MyRecommender iter 27: loss = 26626.12970466101, delta_loss = 2401.7498
+MyRecommender iter 28: loss = 24441.92617287191, delta_loss = 2184.2036
+MyRecommender iter 29: loss = 22290.453519400584, delta_loss = 2151.4727
+MyRecommender iter 30: loss = 20585.13290176485, delta_loss = 1705.3206
+MyRecommender iter 31: loss = 18827.491354338516, delta_loss = 1757.6416
+MyRecommender iter 32: loss = 17469.797215000253, delta_loss = 1357.6941
+MyRecommender iter 33: loss = 16488.41324072199, delta_loss = 981.384
+MyRecommender iter 34: loss = 15817.812862542687, delta_loss = 670.6004
+MyRecommender iter 35: loss = 15404.1158020605, delta_loss = 413.69705
+MyRecommender iter 36: loss = 14882.583163657446, delta_loss = 521.53265
+MyRecommender iter 37: loss = 14529.002623516097, delta_loss = 353.58054
+MyRecommender iter 38: loss = 14222.808656228593, delta_loss = 306.19397
+MyRecommender iter 39: loss = 13718.091761034306, delta_loss = 504.7169
+MyRecommender iter 40: loss = 13330.248991947745, delta_loss = 387.84277
+MyRecommender iter 41: loss = 13047.380906763263, delta_loss = 282.86807
+MyRecommender iter 42: loss = 12630.683380861725, delta_loss = 416.69754
+MyRecommender iter 43: loss = 12519.229106548924, delta_loss = 111.45428
+MyRecommender iter 44: loss = 12255.75805379852, delta_loss = 263.47104
+MyRecommender iter 45: loss = 12139.026169832734, delta_loss = 116.73188
+MyRecommender iter 46: loss = 12011.723280061751, delta_loss = 127.30289
+MyRecommender iter 47: loss = 11865.96382444154, delta_loss = 145.75946
+MyRecommender iter 48: loss = 11858.17669997936, delta_loss = 7.7871246
+MyRecommender iter 49: loss = 11835.740537652759, delta_loss = 22.436163
+MyRecommender iter 50: loss = 11696.929718066809, delta_loss = 138.81082
+MyRecommender iter 51: loss = 11676.516935421248, delta_loss = 20.412783
+MyRecommender iter 52: loss = 11611.361857660102, delta_loss = 65.155075
+MyRecommender iter 53: loss = 11624.577797199572, delta_loss = -13.2159395
+MyRecommender iter 54: loss = 11543.141782821136, delta_loss = 81.43601
+MyRecommender iter 55: loss = 11559.540214596636, delta_loss = -16.398432
+MyRecommender iter 56: loss = 11483.447747466302, delta_loss = 76.09247
+MyRecommender iter 57: loss = 11440.302982289404, delta_loss = 43.144764
+MyRecommender iter 58: loss = 11379.686174943163, delta_loss = 60.616806
+MyRecommender iter 59: loss = 11345.967645857323, delta_loss = 33.71853
+MyRecommender iter 60: loss = 11372.087573381123, delta_loss = -26.119928
+MyRecommender iter 61: loss = 11270.867485598597, delta_loss = 101.220085
+MyRecommender iter 62: loss = 11280.858067085752, delta_loss = -9.9905815
+MyRecommender iter 63: loss = 11208.675183047179, delta_loss = 72.182884
+MyRecommender iter 64: loss = 11238.83884647049, delta_loss = -30.163664
+MyRecommender iter 65: loss = 11216.268146796696, delta_loss = 22.5707
+MyRecommender iter 66: loss = 11155.77274983039, delta_loss = 60.495396
+MyRecommender iter 67: loss = 11120.732488850965, delta_loss = 35.04026
+MyRecommender iter 68: loss = 11113.952655432788, delta_loss = 6.7798333
+MyRecommender iter 69: loss = 11097.121066816013, delta_loss = 16.831589
+MyRecommender iter 70: loss = 11055.710992119924, delta_loss = 41.410076
+MyRecommender iter 71: loss = 10977.491902167, delta_loss = 78.21909
+MyRecommender iter 72: loss = 10994.335616283422, delta_loss = -16.843714
+MyRecommender iter 73: loss = 10998.734115548375, delta_loss = -4.3984995
+MyRecommender iter 74: loss = 10954.886670115053, delta_loss = 43.847446
+MyRecommender iter 75: loss = 10902.9468994959, delta_loss = 51.93977
+MyRecommender iter 76: loss = 10876.838076923763, delta_loss = 26.108822
+MyRecommender iter 77: loss = 10852.791966770657, delta_loss = 24.04611
+MyRecommender iter 78: loss = 10832.64661479982, delta_loss = 20.145351
+MyRecommender iter 79: loss = 10796.607901724083, delta_loss = 36.03871
+MyRecommender iter 80: loss = 10830.688464786484, delta_loss = -34.080563
+MyRecommender iter 81: loss = 10784.238737822141, delta_loss = 46.449726
+MyRecommender iter 82: loss = 10816.852256183332, delta_loss = -32.613518
+MyRecommender iter 83: loss = 10781.790003808212, delta_loss = 35.062252
+MyRecommender iter 84: loss = 10812.298299396896, delta_loss = -30.508295
+MyRecommender iter 85: loss = 10746.308471242884, delta_loss = 65.98983
+MyRecommender iter 86: loss = 10736.308924141444, delta_loss = 9.999547
+MyRecommender iter 87: loss = 10713.309365088378, delta_loss = 22.99956
+MyRecommender iter 88: loss = 10770.021584429553, delta_loss = -56.71222
+MyRecommender iter 89: loss = 10714.444997686724, delta_loss = 55.576588
+MyRecommender iter 90: loss = 10689.266792449755, delta_loss = 25.178205
+MyRecommender iter 91: loss = 10699.356162055008, delta_loss = -10.08937
+MyRecommender iter 92: loss = 10726.133501961891, delta_loss = -26.77734
+MyRecommender iter 93: loss = 10713.309708801973, delta_loss = 12.823793
+MyRecommender iter 94: loss = 10673.366933827994, delta_loss = 39.942776
+MyRecommender iter 95: loss = 10669.48067107895, delta_loss = 3.8862627
+MyRecommender iter 96: loss = 10612.037254040973, delta_loss = 57.443417
+MyRecommender iter 97: loss = 10661.51986377477, delta_loss = -49.48261
+MyRecommender iter 98: loss = 10662.388462426161, delta_loss = -0.86859864
+MyRecommender iter 99: loss = 10668.24275681131, delta_loss = -5.8542943
+MyRecommender iter 100: loss = 10624.093948438951, delta_loss = 44.148808
+Job Train completed.
+Job End.
+Evaluator value:Entropy top 10 is 58.5592735283091
+Evaluator value:AUC top 10 is 0.09116539625230259
+Evaluator value:RECALL top 10 is 0.030395519278253045
+Evaluator value:AP top 10 is 0.9998939554612937
+Evaluator value:Novelty top 10 is 0.0
+Evaluator value:RR top 10 is 1.0
+Evaluator value:NDCG top 10 is 0.9999325336286332
+Evaluator value:PRECISION top 10 is 0.9998939554612937
+Result path is ../result/preference-myrec-output/myrec
