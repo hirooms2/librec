@@ -500,7 +500,7 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 	public List<Integer> getColumns_NE(int row, int N, int T) {
 		if (row < numRows) {
 			List<Integer> res = new ArrayList<>(rowPtr[row + 1] - rowPtr[row]);
-			int start = T / 2 - (N - 1) / 2;
+			int start = T / 2;
 			for (int i = start; i < start + N; i++) {
 				res.add(list.get(row).get(i).getLeft());
 			}

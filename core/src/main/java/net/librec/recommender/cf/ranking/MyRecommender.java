@@ -45,6 +45,8 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 	private List<Set<Integer>> NEuserItemsSet;
 	private List<Set<Integer>> UNuserItemsSet;
 	private int N;
+	Set<Integer> UNitemSet;
+	Set<Integer> NEitemSet;
 
 	@Override
 	protected void setup() throws LibrecException {
@@ -58,6 +60,8 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 
 		for (int iter = 1; iter <= numIterations; iter++) {
 
+			int shot = 0;
+			int noshot = 0;
 			loss = 0.0d;
 			for (int sampleCount = 0, smax = numUsers * 100; sampleCount < smax; sampleCount++) {
 
@@ -70,8 +74,8 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 					if (INitemSet.size() == 0 || INitemSet.size() == numItems)
 						continue;
 
-					Set<Integer> UNitemSet = getItemsSet_UN(trainMatrix, userIdx, N);
-					Set<Integer> NEitemSet = getItemsSet_NE(trainMatrix, userIdx, N);
+					UNitemSet = getItemsSet_UN(trainMatrix, userIdx, N);
+					// NEitemSet = getItemsSet_NE(trainMatrix, userIdx, N);
 
 					List<Integer> INitemList = new ArrayList<>();
 					INitemList.addAll(INitemSet);
@@ -81,16 +85,19 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 
 					// List<Integer> NEitemList = new ArrayList<>();
 					// NEitemList.addAll(NEitemSet);
-					
+
 					INItemIdx = INitemList.get(Randoms.uniform(N));
 					UNItemIdx = UNitemList.get(Randoms.uniform(N));
-//					NEItemIdx = NEitemList.get(Randoms.uniform(N));
+					// NEItemIdx = NEitemList.get(Randoms.uniform(N));
 					do {
 						NEItemIdx = Randoms.uniform(numItems);
-						if (!INitemSet.contains(NEItemIdx) && !UNitemSet.contains(NEItemIdx))
-							break;
-					} while (true);
-				
+					} while (INitemSet.contains(NEItemIdx));
+
+					if (INitemSet.contains(NEItemIdx))
+						System.out.println("NO1");
+
+					// if (UNitemSet.contains(NEItemIdx))
+					// System.out.println("NO2");
 					break;
 
 				}
@@ -101,9 +108,17 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 				double NEPredictRating = predict(userIdx, NEItemIdx);
 
 				double alpha = 1.0;
-				double beta = 0;
-				
-				
+				double beta = 1 - alpha;
+
+				if (UNitemSet.contains(NEItemIdx)) {
+					alpha = 30;
+					// System.out.println(alpha);
+					beta = 0;
+				} else {
+					beta = 0;
+					alpha = 1.0;
+				}
+
 				double diffValue = alpha * (INPredictRating - NEPredictRating)
 						+ beta * (NEPredictRating - UNPredictRating);
 				double lossValue = -Math.log(Maths.logistic(diffValue));
@@ -125,9 +140,9 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 					itemFactors.add(INItemIdx, factorIdx,
 							learnRate * (deriValue * alpha * userFactorValue - regItem * INItemFactorValue));
 					itemFactors.add(NEItemIdx, factorIdx,
-							learnRate * (deriValue * (beta-alpha) * userFactorValue - regItem * NEItemFactorValue));
-					itemFactors.add(UNItemIdx, factorIdx,
-							learnRate * (deriValue * (-beta) * userFactorValue - regItem * UNItemFactorValue));
+							learnRate * (deriValue * (beta - alpha) * userFactorValue - regItem * NEItemFactorValue));
+//					itemFactors.add(UNItemIdx, factorIdx,
+//							learnRate * (deriValue * (-beta) * userFactorValue - regItem * UNItemFactorValue));
 
 					loss += regUser * userFactorValue * userFactorValue
 							+ regItem * INItemFactorValue * INItemFactorValue
@@ -138,6 +153,7 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 			if (isConverged(iter) && earlyStop) {
 				break;
 			}
+			// System.out.println((1.0 * shot) / (shot + noshot));
 			updateLRate(iter);
 		}
 	}
