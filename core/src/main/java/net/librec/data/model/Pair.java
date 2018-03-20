@@ -24,4 +24,8 @@ public class Pair implements Comparable<Pair> {
 		return left;
 	}
 
+	public double getRight() {
+		return right;
+	}
+
 }

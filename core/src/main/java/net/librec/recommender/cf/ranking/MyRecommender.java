@@ -29,6 +29,7 @@ import net.librec.recommender.MatrixFactorizationRecommender;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -75,16 +76,21 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 					List<Integer> INitemList = new ArrayList<>();
 					INitemList.addAll(INitemSet);
 
-					INItemIdx = (INitemList).get(Randoms.uniform(N));
+					List<Integer> UNitemList = new ArrayList<>();
+					UNitemList.addAll(UNitemSet);
 
-					do {
-						UNItemIdx = Randoms.uniform(numItems);
-					} while (!UNitemSet.contains(UNItemIdx));
-
+					// List<Integer> NEitemList = new ArrayList<>();
+					// NEitemList.addAll(NEitemSet);
+					
+					INItemIdx = INitemList.get(Randoms.uniform(N));
+					UNItemIdx = UNitemList.get(Randoms.uniform(N));
+//					NEItemIdx = NEitemList.get(Randoms.uniform(N));
 					do {
 						NEItemIdx = Randoms.uniform(numItems);
-					} while (!NEitemSet.contains(NEItemIdx));
-
+						if (!INitemSet.contains(NEItemIdx) && !UNitemSet.contains(NEItemIdx))
+							break;
+					} while (true);
+				
 					break;
 
 				}
@@ -94,9 +100,12 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 				double UNPredictRating = predict(userIdx, UNItemIdx);
 				double NEPredictRating = predict(userIdx, NEItemIdx);
 
-				double f = INPredictRating - NEPredictRating;
-				double g = NEPredictRating - UNPredictRating;
-				double diffValue = f * g;
+				double alpha = 1.0;
+				double beta = 0;
+				
+				
+				double diffValue = alpha * (INPredictRating - NEPredictRating)
+						+ beta * (NEPredictRating - UNPredictRating);
 				double lossValue = -Math.log(Maths.logistic(diffValue));
 				loss += lossValue;
 
@@ -110,15 +119,15 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 
 					userFactors.add(userIdx, factorIdx,
 							learnRate * (deriValue
-									* ((INItemFactorValue - NEItemFactorValue) * g
-											+ f * (NEItemFactorValue - UNItemFactorValue))
+									* (alpha * (INItemFactorValue - NEItemFactorValue)
+											+ beta * (NEItemFactorValue - UNItemFactorValue))
 									- regUser * userFactorValue));
 					itemFactors.add(INItemIdx, factorIdx,
-							learnRate * (deriValue * userFactorValue * g - regItem * INItemFactorValue));
+							learnRate * (deriValue * alpha * userFactorValue - regItem * INItemFactorValue));
 					itemFactors.add(NEItemIdx, factorIdx,
-							learnRate * (deriValue * userFactorValue * (f - g) - regItem * NEItemFactorValue));
+							learnRate * (deriValue * (beta-alpha) * userFactorValue - regItem * NEItemFactorValue));
 					itemFactors.add(UNItemIdx, factorIdx,
-							learnRate * (deriValue * (-userFactorValue) * f - regItem * UNItemFactorValue));
+							learnRate * (deriValue * (-beta) * userFactorValue - regItem * UNItemFactorValue));
 
 					loss += regUser * userFactorValue * userFactorValue
 							+ regItem * INItemFactorValue * INItemFactorValue
@@ -134,6 +143,7 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 	}
 
 	private List<Set<Integer>> getUserItemsSet_IN(SparseMatrix sparseMatrix) {
+
 		sparseMatrix.setPreferenceList();
 
 		List<Set<Integer>> userItemsSet_IN = new ArrayList<>();

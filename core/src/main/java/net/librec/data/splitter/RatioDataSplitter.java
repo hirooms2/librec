@@ -131,15 +131,6 @@ public class RatioDataSplitter extends AbstractDataSplitter {
 		if (ratio > 0 && ratio < 1) {
 
 			testMatrix = new SparseMatrix(preferenceMatrix);
-
-//			for (int row = 0; row < testMatrix.numRows; row++) {
-//				for (int j = testMatrix.rowPtr[row]; j < testMatrix.rowPtr[row + 1]; j++) {
-//					double val = testMatrix.rowData[j];
-//					if (val != 1.0)
-//						testMatrix.rowData[j] = 0;
-//				}
-//			}
-
 			trainMatrix = new SparseMatrix(preferenceMatrix);
 
 			for (MatrixEntry matrixEntry : preferenceMatrix) {

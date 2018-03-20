@@ -129,7 +129,6 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 		valueSet = new TreeSet<>();
 
 		copyCRS(mat.rowData, mat.rowPtr, mat.colInd);
-
 		copyCCS(mat.colData, mat.colPtr, mat.rowInd);
 	}
 
@@ -149,10 +148,20 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 
 		copyCCS(c, mat.colPtr, mat.rowInd);
 	}
-	
+
 	public void setPreferenceList() {
+
 		for (int i = 0; i < numRows; i++)
 			list.add(new ArrayList<Pair>());
+
+		for (int row = 0; row < numRows; row++) {
+			for (int j = rowPtr[row]; j < rowPtr[row + 1]; j++) {
+				int col = colInd[j];
+				double val = rowData[j];
+				list.get(row).add(new Pair(col, val));
+			}
+			Collections.sort(list.get(row));
+		}
 	}
 
 	private void copyCRS(double[] data, int[] ptr, int[] idx) {
@@ -462,16 +471,14 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 
 	public List<Integer> getColumns_IN(int row) {
 		if (row < numRows) {
-
 			List<Integer> res = new ArrayList<>(rowPtr[row + 1] - rowPtr[row]);
 			for (int j = rowPtr[row]; j < rowPtr[row + 1]; j++) {
 				int col = colInd[j];
 				double val = rowData[j];
-				list.get(row).add(new Pair(col, val));
 				if (val == 1.0)
 					res.add(col);
 			}
-			Collections.sort(list.get(row));
+
 			return res;
 		} else {
 			return new ArrayList<>();
@@ -480,7 +487,6 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 
 	public List<Integer> getColumns_UN(int row, int N) {
 		if (row < numRows) {
-
 			List<Integer> res = new ArrayList<>(rowPtr[row + 1] - rowPtr[row]);
 			for (int i = 0; i < N; i++) {
 				res.add(list.get(row).get(i).getLeft());
@@ -494,7 +500,7 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 	public List<Integer> getColumns_NE(int row, int N, int T) {
 		if (row < numRows) {
 			List<Integer> res = new ArrayList<>(rowPtr[row + 1] - rowPtr[row]);
-			int start = (N + (T - N - 1)) / 2 - (N - 1) / 2;
+			int start = T / 2 - (N - 1) / 2;
 			for (int i = start; i < start + N; i++) {
 				res.add(list.get(row).get(i).getLeft());
 			}

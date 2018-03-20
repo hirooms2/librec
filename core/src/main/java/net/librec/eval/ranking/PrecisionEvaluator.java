@@ -46,7 +46,7 @@ public class PrecisionEvaluator extends AbstractRecommenderEvaluator {
 		int numUsers = testMatrix.numRows();
 		int nonZeroNumUsers = 0;
 		for (int userID = 0; userID < numUsers; userID++) {
-			Set<Integer> testSetByUser = testMatrix.getColumnsSet(userID);
+			List<Integer> testSetByUser = testMatrix.getColumns_IN(userID);
 			if (testSetByUser.size() > 0) {
 				List<ItemEntry<Integer, Double>> recommendListByUser = recommendedList.getItemIdxListByUserIdx(userID);
 
@@ -58,10 +58,7 @@ public class PrecisionEvaluator extends AbstractRecommenderEvaluator {
 						numHits++;
 					}
 				}
-//				System.out.println("Precision Test [" + userID + "]");
-//				System.out.println(testSetByUser);
-//				System.out.println(recommendListByUser);
-
+				
 				totalPrecision += numHits / (this.topN + 0.0);
 				nonZeroNumUsers++;
 			}

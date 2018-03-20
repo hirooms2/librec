@@ -50,7 +50,7 @@ public class AUCEvaluator extends AbstractRecommenderEvaluator {
         int[] numDroppedItemsArray = getConf().getInts("rec.eval.auc.dropped.num");
 
         for (int userIdx = 0; userIdx < numUsers; userIdx++) {
-            Set<Integer> testSetByUser = testMatrix.getColumnsSet(userIdx);
+            List<Integer> testSetByUser = testMatrix.getColumns_IN(userIdx);
             if (testSetByUser.size() > 0) {
                 nonZeroNumUsers++;
                 List<ItemEntry<Integer, Double>> recommendListByUser = recommendedList.getItemIdxListByUserIdx(userIdx);
