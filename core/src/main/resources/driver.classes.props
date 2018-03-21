@@ -39,6 +39,7 @@ aspectmodelranking=net.librec.recommender.cf.ranking.AspectModelRecommender
 bhfree=net.librec.recommender.cf.BHFreeRecommender
 bpr=net.librec.recommender.cf.ranking.BPRRecommender
 myrec=net.librec.recommender.cf.ranking.MyRecommender
+myrec2=net.librec.recommender.cf.ranking.MyRecommender2
 bucm=net.librec.recommender.cf.BUCMRecommender
 climf=net.librec.recommender.cf.ranking.CLIMFRecommender
 eals=net.librec.recommender.cf.ranking.EALSRecommender

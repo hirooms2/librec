@@ -60,8 +60,6 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 
 		for (int iter = 1; iter <= numIterations; iter++) {
 
-			int shot = 0;
-			int noshot = 0;
 			loss = 0.0d;
 			for (int sampleCount = 0, smax = numUsers * 100; sampleCount < smax; sampleCount++) {
 
@@ -75,52 +73,35 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 						continue;
 
 					UNitemSet = getItemsSet_UN(trainMatrix, userIdx, N);
-					// NEitemSet = getItemsSet_NE(trainMatrix, userIdx, N);
+					List<Integer> UNitemList = new ArrayList<>();
+					UNitemList.addAll(UNitemSet);
+					UNItemIdx = UNitemList.get(Randoms.uniform(N));
 
 					List<Integer> INitemList = new ArrayList<>();
 					INitemList.addAll(INitemSet);
-
-					List<Integer> UNitemList = new ArrayList<>();
-					UNitemList.addAll(UNitemSet);
-
-					// List<Integer> NEitemList = new ArrayList<>();
-					// NEitemList.addAll(NEitemSet);
-
 					INItemIdx = INitemList.get(Randoms.uniform(N));
-					UNItemIdx = UNitemList.get(Randoms.uniform(N));
-					// NEItemIdx = NEitemList.get(Randoms.uniform(N));
+
 					do {
 						NEItemIdx = Randoms.uniform(numItems);
-					} while (INitemSet.contains(NEItemIdx));
+						if (!INitemSet.contains(NEItemIdx))
+							break;
+					} while (true);
 
-					if (INitemSet.contains(NEItemIdx))
-						System.out.println("NO1");
-
-					// if (UNitemSet.contains(NEItemIdx))
-					// System.out.println("NO2");
 					break;
 
 				}
 
 				// update parameters
 				double INPredictRating = predict(userIdx, INItemIdx);
-				double UNPredictRating = predict(userIdx, UNItemIdx);
 				double NEPredictRating = predict(userIdx, NEItemIdx);
+				double UNPredictRating = predict(userIdx, UNItemIdx);
 
-				double alpha = 1.0;
-				double beta = 1 - alpha;
+				int indicator = UNitemSet.contains(NEItemIdx) ? 1 : 0;
+				double alpha = (indicator == 1) ? 20 : 1;
+				double beta = (indicator == 1) ? 0 : 0.01;
 
-				if (UNitemSet.contains(NEItemIdx)) {
-					alpha = 30;
-					// System.out.println(alpha);
-					beta = 0;
-				} else {
-					beta = 0;
-					alpha = 1.0;
-				}
-
-				double diffValue = alpha * (INPredictRating - NEPredictRating)
-						+ beta * (NEPredictRating - UNPredictRating);
+				double diffValue = (INPredictRating - NEPredictRating) * alpha
+						+ (NEPredictRating - UNPredictRating) * beta;
 				double lossValue = -Math.log(Maths.logistic(diffValue));
 				loss += lossValue;
 
@@ -129,26 +110,28 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 				for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
 					double userFactorValue = userFactors.get(userIdx, factorIdx);
 					double INItemFactorValue = itemFactors.get(INItemIdx, factorIdx);
-					double UNItemFactorValue = itemFactors.get(UNItemIdx, factorIdx);
 					double NEItemFactorValue = itemFactors.get(NEItemIdx, factorIdx);
+					double UNItemFactorValue = itemFactors.get(UNItemIdx, factorIdx);
 
 					userFactors.add(userIdx, factorIdx,
-							learnRate * (deriValue
-									* (alpha * (INItemFactorValue - NEItemFactorValue)
-											+ beta * (NEItemFactorValue - UNItemFactorValue))
-									- regUser * userFactorValue));
+							learnRate * (deriValue * (alpha) * (INItemFactorValue - NEItemFactorValue)
+									+ beta * (NEItemFactorValue - UNItemFactorValue) - regUser * userFactorValue));
 					itemFactors.add(INItemIdx, factorIdx,
-							learnRate * (deriValue * alpha * userFactorValue - regItem * INItemFactorValue));
+							learnRate * (deriValue * (alpha) * userFactorValue - regItem * INItemFactorValue));
 					itemFactors.add(NEItemIdx, factorIdx,
 							learnRate * (deriValue * (beta - alpha) * userFactorValue - regItem * NEItemFactorValue));
-//					itemFactors.add(UNItemIdx, factorIdx,
-//							learnRate * (deriValue * (-beta) * userFactorValue - regItem * UNItemFactorValue));
 
 					loss += regUser * userFactorValue * userFactorValue
 							+ regItem * INItemFactorValue * INItemFactorValue
-							+ regItem * NEItemFactorValue * NEItemFactorValue
-							+ regItem * UNItemFactorValue * UNItemFactorValue;
+							+ regItem * NEItemFactorValue * NEItemFactorValue;
+
+					if (indicator == 0) {
+						itemFactors.add(UNItemIdx, factorIdx,
+								learnRate * (deriValue * -(beta) * userFactorValue - regItem * UNItemFactorValue));
+						loss += regUser * UNItemFactorValue * UNItemFactorValue;
+					}
 				}
+
 			}
 			if (isConverged(iter) && earlyStop) {
 				break;

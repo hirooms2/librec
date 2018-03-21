@@ -224,7 +224,7 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 	public int[] getRowPointers() {
 		return rowPtr;
 	}
-
+	
 	/**
 	 * @return the column indices of CCS structure
 	 */

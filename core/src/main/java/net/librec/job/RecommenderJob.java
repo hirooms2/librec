@@ -424,7 +424,7 @@ public class RecommenderJob {
 		List<String> iterations = Arrays.asList(new String[] { "300" });
 		List<String> factors = Arrays.asList(new String[] { "10" });
 */
-		List<String> topNs = Arrays.asList(new String[] { "10" });
+		List<String> topNs = Arrays.asList(new String[] { "5" });
 		List<String> learnrates = Arrays.asList(new String[] { "0.01" });
 		List<String> iterations = Arrays.asList(new String[] { "100" });
 		List<String> factors = Arrays.asList(new String[] { "10" });
