@@ -47,7 +47,7 @@ public class ReciprocalRankEvaluator extends AbstractRecommenderEvaluator {
         int numUsers = testMatrix.numRows();
         int nonZeroNumUsers = 0;
         for (int userID = 0; userID < numUsers; userID++) {
-            Set<Integer> testListByUser = testMatrix.getColumnsSet(userID);
+            List<Integer> testListByUser = testMatrix.getColumns_IN(userID);
             if (testListByUser.size() > 0) {
                 List<ItemEntry<Integer, Double>> recommendListByUser = recommendedList.getItemIdxListByUserIdx(userID);
 

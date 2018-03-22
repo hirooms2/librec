@@ -56,7 +56,7 @@ public class NormalizedDCGEvaluator extends AbstractRecommenderEvaluator {
         int numUsers = testMatrix.numRows();
         int nonZeroNumUsers = 0;
         for (int userID = 0; userID < numUsers; userID++) {
-            Set<Integer> testSetByUser = testMatrix.getColumnsSet(userID);
+            List<Integer> testSetByUser = testMatrix.getColumns_IN(userID);
             if (testSetByUser.size() > 0) {
 
                 double dcg = 0.0;

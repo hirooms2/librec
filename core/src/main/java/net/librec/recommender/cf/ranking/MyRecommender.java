@@ -33,10 +33,11 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * Rendle et al., <strong>BPR: Bayesian Personalized Ranking from Implicit
- * Feedback</strong>, UAI 2009.
+ * 
+ * Triple Wise Learning
+ * 
+ * @author KIMTAEHO
  *
- * @author GuoGuibing and Keqiang Wang
  */
 @ModelData({ "isRanking", "bpr", "userFactors", "itemFactors" })
 public class MyRecommender extends MatrixFactorizationRecommender {
@@ -81,6 +82,26 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 					INitemList.addAll(INitemSet);
 					INItemIdx = INitemList.get(Randoms.uniform(N));
 
+					/*
+					 * / |IN|=|NE|=|UN|
+					 */
+					// NEitemSet = getItemsSet_NE(trainMatrix, userIdx, N);
+					// List<Integer> NEitemList = new ArrayList<>();
+					// NEitemList.addAll(NEitemSet);
+					// NEItemIdx = NEitemList.get(Randoms.uniform(N));
+
+					// /*
+					// * |IN|=|UN|, NE = S\(IN+UN)
+					// */
+					// do {
+					// NEItemIdx = Randoms.uniform(numItems);
+					// if (!INitemSet.contains(NEItemIdx) && !UNitemSet.contains(NEItemIdx))
+					// break;
+					// } while (true);
+
+					/*
+					 * |IN|=|UN|, NE = S\(IN)
+					 */
 					do {
 						NEItemIdx = Randoms.uniform(numItems);
 						if (!INitemSet.contains(NEItemIdx))
@@ -97,8 +118,14 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 				double UNPredictRating = predict(userIdx, UNItemIdx);
 
 				int indicator = UNitemSet.contains(NEItemIdx) ? 1 : 0;
-				double alpha = (indicator == 1) ? 20 : 1;
-				double beta = (indicator == 1) ? 0 : 0.01;
+
+				double alpha = 1;
+				double beta = 0;
+
+				if (indicator == 1) {
+					alpha = 20;
+					beta = 0;
+				}
 
 				double diffValue = (INPredictRating - NEPredictRating) * alpha
 						+ (NEPredictRating - UNPredictRating) * beta;
@@ -125,11 +152,11 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 							+ regItem * INItemFactorValue * INItemFactorValue
 							+ regItem * NEItemFactorValue * NEItemFactorValue;
 
-					if (indicator == 0) {
-						itemFactors.add(UNItemIdx, factorIdx,
-								learnRate * (deriValue * -(beta) * userFactorValue - regItem * UNItemFactorValue));
-						loss += regUser * UNItemFactorValue * UNItemFactorValue;
-					}
+//					if (indicator == 0) {
+//						itemFactors.add(UNItemIdx, factorIdx,
+//								learnRate * (deriValue * -(beta) * userFactorValue - regItem * UNItemFactorValue));
+//						loss += regUser * UNItemFactorValue * UNItemFactorValue;
+//					}
 				}
 
 			}
@@ -159,6 +186,6 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 
 	private Set<Integer> getItemsSet_NE(SparseMatrix sparseMatrix, int userIdx, int N) {
 
-		return new HashSet(sparseMatrix.getColumns_NE(userIdx, N, numUsers));
+		return new HashSet(sparseMatrix.getColumns_NE(userIdx, N));
 	}
 }

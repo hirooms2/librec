@@ -151,6 +151,8 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 
 	public void setPreferenceList() {
 
+		int[] cnt = new int[10];
+		int rated = 0;
 		for (int i = 0; i < numRows; i++)
 			list.add(new ArrayList<Pair>());
 
@@ -159,9 +161,39 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 				int col = colInd[j];
 				double val = rowData[j];
 				list.get(row).add(new Pair(col, val));
+
+				if (val < 0.1) {
+					cnt[0]++;
+				} else if (val < 0.2) {
+					cnt[1]++;
+				} else if (val < 0.3) {
+					cnt[2]++;
+				} else if (val < 0.4) {
+					cnt[3]++;
+				} else if (val < 0.5) {
+					cnt[4]++;
+				} else if (val < 0.6) {
+					cnt[5]++;
+				} else if (val < 0.7) {
+					cnt[6]++;
+				} else if (val < 0.8) {
+					cnt[7]++;
+				} else if (val < 0.9) {
+					cnt[8]++;
+				} else if (val <= 1) {
+					cnt[9]++;
+				}
+				if (val == 1) {
+					rated++;
+				}
 			}
 			Collections.sort(list.get(row));
 		}
+
+		for (int i : cnt) {
+			System.out.print(i + " ");
+		}
+		System.out.println();
 	}
 
 	private void copyCRS(double[] data, int[] ptr, int[] idx) {
@@ -224,7 +256,7 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 	public int[] getRowPointers() {
 		return rowPtr;
 	}
-	
+
 	/**
 	 * @return the column indices of CCS structure
 	 */
@@ -497,12 +529,17 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 		}
 	}
 
-	public List<Integer> getColumns_NE(int row, int N, int T) {
+	public List<Integer> getColumns_NE(int row, int N) {
 		if (row < numRows) {
 			List<Integer> res = new ArrayList<>(rowPtr[row + 1] - rowPtr[row]);
-			int start = T / 2;
-			for (int i = start; i < start + N; i++) {
-				res.add(list.get(row).get(i).getLeft());
+			// System.out.println(rowPtr[row + 1] - rowPtr[row]);
+			int start = (rowPtr[row + 1] - rowPtr[row]) / 2 - (N - 1) / 2;
+			try {
+				for (int i = start; i < start + N; i++) {
+					res.add(list.get(row).get(i).getLeft());
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
 			}
 			return res;
 		} else {

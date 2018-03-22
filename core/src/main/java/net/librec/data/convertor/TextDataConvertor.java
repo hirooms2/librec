@@ -242,7 +242,9 @@ public class TextDataConvertor extends AbstractDataConvertor {
                 int loopLength = isComplete ? bufferData.length : bufferData.length - 1;
                 for (int i = 0; i < loopLength; i++) {
                     String line = bufferData[i];
+                    
                     String[] data = line.trim().split("[ \t,]+");
+                    
                     String user = data[0];
                     String item = data[1];
                     Double rate = ((dataColumnFormat.equals("UIR") || dataColumnFormat.equals("UIRT")) && data.length >= 3) ? Double.valueOf(data[2]) : 1.0;

@@ -18,6 +18,7 @@
 package net.librec.job;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -40,6 +41,7 @@ import net.librec.filter.RecommendedFilter;
 import net.librec.math.algorithm.Randoms;
 import net.librec.recommender.Recommender;
 import net.librec.recommender.RecommenderContext;
+import net.librec.recommender.cf.ranking.MyRecommender2;
 import net.librec.recommender.item.RecommendedItem;
 import net.librec.similarity.RecommenderSimilarity;
 import net.librec.util.DriverClassUtil;
@@ -69,6 +71,12 @@ public class RecommenderJob {
 	private Map<String, List<String>> paramInfo;
 
 	private String globalOutputPath;
+
+	private int theta;
+
+	public void setTheta(int theta) {
+		this.theta = theta;
+	}
 
 	public RecommenderJob(Configuration conf) {
 		this.conf = conf;
@@ -170,6 +178,9 @@ public class RecommenderJob {
 		generateSimilarity(context);
 		Recommender recommender = (Recommender) ReflectionUtil.newInstance((Class<Recommender>) getRecommenderClass(),
 				conf);
+		if (recommender instanceof MyRecommender2) {
+			((MyRecommender2) recommender).setTheta(theta);
+		}
 		recommender.recommend(context);
 		executeEvaluator(recommender);
 		List<RecommendedItem> recommendedList = recommender.getRecommendedList();
@@ -311,7 +322,7 @@ public class RecommenderJob {
 		String factorNumber = conf.get("rec.factor.number");
 		String iteratorMaximum = conf.get("rec.iterator.maximum");
 		String rankingTopN = conf.get("rec.recommender.ranking.topn");
-
+		PrintWriter pw = new PrintWriter("output.txt");
 		if (recommendedList != null && recommendedList.size() > 0) {
 			// make output path
 			String algoSimpleName = DriverClassUtil.getDriverName(getRecommenderClass());
@@ -327,7 +338,7 @@ public class RecommenderJob {
 				// if data.model.splitter = KCV || LOOCV
 				localOutputPath = globalOutputPath + "-" + String.valueOf(conf.getInt("data.splitter.cv.index")) + "]";
 			} else {
-				localOutputPath = globalOutputPath+"]";
+				localOutputPath = globalOutputPath + "]";
 			}
 
 			localOutputPath += ".txt";
@@ -419,18 +430,16 @@ public class RecommenderJob {
 
 	public void setParamInfo() {
 		/*
-		List<String> topNs = Arrays.asList(new String[] { "5" , "10" , "20" , "30" });
-		List<String> learnrates = Arrays.asList(new String[] { "0.01" , "0.1" });
-		List<String> iterations = Arrays.asList(new String[] { "300" });
-		List<String> factors = Arrays.asList(new String[] { "10" });
-*/
-		List<String> topNs = Arrays.asList(new String[] { "5" });
+		 * List<String> topNs = Arrays.asList(new String[] { "5" , "10" , "20" , "30"
+		 * }); List<String> learnrates = Arrays.asList(new String[] { "0.01" , "0.1" });
+		 * List<String> iterations = Arrays.asList(new String[] { "300" }); List<String>
+		 * factors = Arrays.asList(new String[] { "10" });
+		 */
+		List<String> topNs = Arrays.asList(new String[] { "10" });
 		List<String> learnrates = Arrays.asList(new String[] { "0.01" });
 		List<String> iterations = Arrays.asList(new String[] { "100" });
 		List<String> factors = Arrays.asList(new String[] { "10" });
 
-		
-		
 		paramInfo.put("topN", topNs);
 		paramInfo.put("learnrate", learnrates);
 		paramInfo.put("iteration", iterations);

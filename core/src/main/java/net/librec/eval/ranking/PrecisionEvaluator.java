@@ -22,6 +22,7 @@ import net.librec.math.structure.SparseMatrix;
 import net.librec.recommender.item.ItemEntry;
 import net.librec.recommender.item.RecommendedList;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -46,7 +47,7 @@ public class PrecisionEvaluator extends AbstractRecommenderEvaluator {
 		int numUsers = testMatrix.numRows();
 		int nonZeroNumUsers = 0;
 		for (int userID = 0; userID < numUsers; userID++) {
-			List<Integer> testSetByUser = testMatrix.getColumns_IN(userID);
+			Set<Integer> testSetByUser = new HashSet(testMatrix.getColumns_IN(userID));
 			if (testSetByUser.size() > 0) {
 				List<ItemEntry<Integer, Double>> recommendListByUser = recommendedList.getItemIdxListByUserIdx(userID);
 
