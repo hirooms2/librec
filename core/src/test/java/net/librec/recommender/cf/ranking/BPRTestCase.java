@@ -52,5 +52,10 @@ public class BPRTestCase extends BaseTestCase {
         conf.addResource(resource);
         RecommenderJob job = new RecommenderJob(conf);
         job.runJob();
+        job.runJob();
+        job.runJob();
+        job.runJob();
+        job.runJob();
+
     }
 }

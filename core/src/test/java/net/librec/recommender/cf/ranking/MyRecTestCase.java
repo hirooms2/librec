@@ -33,24 +33,36 @@ import java.io.IOException;
  * @author SunYatong
  */
 public class MyRecTestCase extends BaseTestCase {
-    @Override
-    @Before
-    public void setUp() throws Exception {
-        super.setUp();
-    }
+	@Override
+	@Before
+	public void setUp() throws Exception {
+		super.setUp();
+	}
 
-    /**
-     * test the whole process of BPR recommendation
-     *
-     * @throws ClassNotFoundException
-     * @throws LibrecException
-     * @throws IOException
-     */
-    @Test
-    public void testRecommender() throws ClassNotFoundException, LibrecException, IOException {
-        Configuration.Resource resource = new Configuration.Resource("rec/cf/ranking/myrec-test.properties");
-        conf.addResource(resource);
-        RecommenderJob job = new RecommenderJob(conf);
-        job.runJob();
-    }
+	/**
+	 * test the whole process of BPR recommendation
+	 *
+	 * @throws ClassNotFoundException
+	 * @throws LibrecException
+	 * @throws IOException
+	 */
+	@Test
+	public void testRecommender() throws ClassNotFoundException, LibrecException, IOException {
+		Configuration.Resource resource = new Configuration.Resource("rec/cf/ranking/myrec-test.properties");
+		conf.addResource(resource);
+		RecommenderJob job = new RecommenderJob(conf);
+		
+		for (double alpha = 0; alpha <= 100; alpha += 5) {
+			for (double beta = 0; beta <= 100; beta += 5) {
+				if (alpha + beta == 100) {
+					job.setAlpha(alpha / 100);
+					job.setBeta(beta / 100);
+					job.setGamma(0);
+					job.runJob();
+				}
+
+			}
+		}
+
+	}
 }

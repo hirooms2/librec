@@ -15,10 +15,14 @@
  * You should have received a copy of the GNU General Public License
  * along with LibRec. If not, see <http://www.gnu.org/licenses/>.
  */
+/*
+at bpr : kcv에서 모든 값 올바르게 나옴. avg는 안됨
+at myrec : kcv에서 첫값만 똥값 . avg는 안됨
+*/
+
 package net.librec.job;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -41,6 +45,7 @@ import net.librec.filter.RecommendedFilter;
 import net.librec.math.algorithm.Randoms;
 import net.librec.recommender.Recommender;
 import net.librec.recommender.RecommenderContext;
+import net.librec.recommender.cf.ranking.MyRecommender;
 import net.librec.recommender.cf.ranking.MyRecommender2;
 import net.librec.recommender.item.RecommendedItem;
 import net.librec.similarity.RecommenderSimilarity;
@@ -48,6 +53,10 @@ import net.librec.util.DriverClassUtil;
 import net.librec.util.FileUtil;
 import net.librec.util.JobUtil;
 import net.librec.util.ReflectionUtil;
+
+/*
+4개의 param에 대해서, top-n 제외하고 3중 for-loop 돌 경우
+*/
 
 /**
  * RecommenderJob
@@ -64,7 +73,7 @@ public class RecommenderJob {
 
 	private DataModel dataModel;
 
-	private Map<String, List<Double>> cvEvalResults;
+	private Map<Integer, Map<String, List<Double>>> agg_cvEvalResults;
 
 	private Map<String, Double> evalResultList;
 
@@ -72,10 +81,24 @@ public class RecommenderJob {
 
 	private String globalOutputPath;
 
+	private double alpha, beta, gamma;
+
 	private int theta;
 
 	public void setTheta(int theta) {
 		this.theta = theta;
+	}
+
+	public void setAlpha(double alpha) {
+		this.alpha = alpha;
+	}
+
+	public void setBeta(double beta) {
+		this.beta = beta;
+	}
+
+	public void setGamma(double gamma) {
+		this.gamma = gamma;
 	}
 
 	public RecommenderJob(Configuration conf) {
@@ -103,62 +126,58 @@ public class RecommenderJob {
 		paramInfo = new HashMap<String, List<String>>();
 		setParamInfo();
 
-		for (int a = 0; a < paramInfo.get("topN").size(); a++) {
-			for (int b = 0; b < paramInfo.get("learnrate").size(); b++) {
-				for (int c = 0; c < paramInfo.get("iteration").size(); c++) {
-					for (int d = 0; d < paramInfo.get("factor").size(); d++) {
+		for (int b = 0; b < paramInfo.get("learnrate").size(); b++) {
+			for (int c = 0; c < paramInfo.get("iteration").size(); c++) {
+				for (int d = 0; d < paramInfo.get("factor").size(); d++) {
 
-						conf.set("rec.recommender.ranking.topn", paramInfo.get("topN").get(a));
-						conf.set("rec.iterator.learnrate", paramInfo.get("learnrate").get(b));
-						conf.set("rec.iterator.maximum", paramInfo.get("iteration").get(c));
-						conf.set("rec.factor.number", paramInfo.get("factor").get(d));
+					conf.set("rec.iterator.learnrate", paramInfo.get("learnrate").get(b));
+					conf.set("rec.iterator.maximum", paramInfo.get("iteration").get(c));
+					conf.set("rec.factor.number", paramInfo.get("factor").get(d));
 
-						switch (modelSplit) {
-						case "kcv": {
-							int cvNumber = conf.getInt("data.splitter.cv.number", 1);
-							cvEvalResults = new HashMap<>();
-							for (int i = 1; i <= cvNumber; i++) {
+					switch (modelSplit) {
+					case "kcv": {
+						int cvNumber = conf.getInt("data.splitter.cv.number", 1);
+						agg_cvEvalResults = new HashMap<>();
+
+						for (int i = 1; i <= cvNumber; i++) {
+							LOG.info("Splitter info: the index of " + modelSplit + " splitter times is " + i);
+							conf.set("data.splitter.cv.index", String.valueOf(i));
+							executeRecommenderJob();
+						}
+						printCVAverageResult();
+						break;
+					}
+					case "loocv": {
+						String loocvType = conf.get("data.splitter.loocv");
+						if (StringUtils.equals("userdate", loocvType) || StringUtils.equals("itemdate", loocvType)) {
+							executeRecommenderJob();
+						} else {
+							// cvEvalResults = new HashMap<>();
+							for (int i = 1; i <= conf.getInt("data.splitter.cv.number", 1); i++) {
 								LOG.info("Splitter info: the index of " + modelSplit + " splitter times is " + i);
 								conf.set("data.splitter.cv.index", String.valueOf(i));
 								executeRecommenderJob();
 							}
 							printCVAverageResult();
-							break;
 						}
-						case "loocv": {
-							String loocvType = conf.get("data.splitter.loocv");
-							if (StringUtils.equals("userdate", loocvType)
-									|| StringUtils.equals("itemdate", loocvType)) {
-								executeRecommenderJob();
-							} else {
-								cvEvalResults = new HashMap<>();
-								for (int i = 1; i <= conf.getInt("data.splitter.cv.number", 1); i++) {
-									LOG.info("Splitter info: the index of " + modelSplit + " splitter times is " + i);
-									conf.set("data.splitter.cv.index", String.valueOf(i));
-									executeRecommenderJob();
-								}
-								printCVAverageResult();
-							}
-							break;
-						}
-						case "testset": {
-							executeRecommenderJob();
-							break;
-						}
-						case "givenn": {
-							executeRecommenderJob();
-							break;
-						}
-						case "ratio": {
-							executeRecommenderJob();
-							break;
-						}
-						}
+						break;
+					}
+					case "testset": {
+						executeRecommenderJob();
+						break;
+					}
+					case "givenn": {
+						executeRecommenderJob();
+						break;
+					}
+					case "ratio": {
+						executeRecommenderJob();
+						break;
+					}
 					}
 				}
 			}
 		}
-
 	}
 
 	/**
@@ -178,14 +197,29 @@ public class RecommenderJob {
 		generateSimilarity(context);
 		Recommender recommender = (Recommender) ReflectionUtil.newInstance((Class<Recommender>) getRecommenderClass(),
 				conf);
-		if (recommender instanceof MyRecommender2) {
-			((MyRecommender2) recommender).setTheta(theta);
+		if (recommender instanceof MyRecommender) {
+			((MyRecommender) recommender).setAlpha(this.alpha);
+			((MyRecommender) recommender).setBeta(this.beta);
+			((MyRecommender) recommender).setGamma(this.gamma);
 		}
+
+		if (recommender instanceof MyRecommender2) {
+			((MyRecommender2) recommender).setTheta(this.theta);
+		}
+
 		recommender.recommend(context);
-		executeEvaluator(recommender);
 		List<RecommendedItem> recommendedList = recommender.getRecommendedList();
 		recommendedList = filterResult(recommendedList);
-		saveResult(recommendedList);
+
+		/* 한번의 실행에 여러개의 topn을 측정(setParamInfo에 저장된 값들로) */
+
+		for (int i = 0; i < paramInfo.get("topN").size(); i++) {
+			String newTopN = paramInfo.get("topN").get(i);
+			conf.set("rec.recommender.ranking.topn", newTopN);
+			recommender.setTopN(Integer.parseInt(newTopN));
+			executeEvaluator(recommender);
+			saveResult(recommendedList);
+		}
 	}
 
 	/**
@@ -263,6 +297,7 @@ public class RecommenderJob {
 
 		if (conf.getBoolean("rec.eval.enable")) {
 			String[] evalClassKeys = conf.getStrings("rec.eval.classes");
+			Map<String, List<Double>> cvEvalResults = new HashMap<>();
 			if (evalClassKeys != null && evalClassKeys.length > 0) {// Run the evaluator which is
 				// designated.
 				for (int classIdx = 0; classIdx < evalClassKeys.length; ++classIdx) {
@@ -271,11 +306,13 @@ public class RecommenderJob {
 					evaluator.setTopN(conf.getInt("rec.recommender.ranking.topn", 10));
 					double evalValue = recommender.evaluate(evaluator);
 					LOG.info("Evaluator info:" + evaluator.getClass().getSimpleName() + " is " + evalValue);
-					collectCVResults(evaluator.getClass().getSimpleName(), evalValue);
+					cvEvalResults = collectCVResults(evaluator.getClass().getSimpleName(), evalValue, cvEvalResults);
 				}
 			} else {// Run all evaluators
 				Map<MeasureValue, Double> evalValueMap = recommender.evaluateMap();
+				boolean isCV = false;
 				if (evalValueMap != null && evalValueMap.size() > 0) {
+					int agg_idx = 0;
 					for (Map.Entry<MeasureValue, Double> entry : evalValueMap.entrySet()) {
 						String evalName = null;
 						if (entry != null && entry.getKey() != null) {
@@ -284,23 +321,42 @@ public class RecommenderJob {
 								LOG.info("Evaluator value:" + entry.getKey().getMeasure() + " top "
 										+ entry.getKey().getTopN() + " is " + entry.getValue());
 								evalName = entry.getKey().getMeasure() + "";
-								// evalName = entry.getKey().getMeasure() + " top " + entry.getKey().getTopN();
-
 								evalResultList.put(evalName, entry.getValue());
-
+								agg_idx = entry.getKey().getTopN();
 							} else { // else
 								LOG.info("Evaluator value:" + entry.getKey().getMeasure() + " is " + entry.getValue());
 								evalName = entry.getKey().getMeasure() + "";
-
 							}
 							if (null != cvEvalResults) {
-								collectCVResults(evalName, entry.getValue());
+								isCV = true;
+								cvEvalResults = collectCVResults(evalName, entry.getValue(), cvEvalResults);
 							}
+						}
+					}
+					if (null != dataModel
+							&& (dataModel.getDataSplitter() instanceof KCVDataSplitter
+									|| dataModel.getDataSplitter() instanceof LOOCVDataSplitter)
+							&& null != conf.getInt("data.splitter.cv.index")) {
+						if (agg_cvEvalResults.containsKey(agg_idx)) {
+							for (String metric : cvEvalResults.keySet()) {
+								agg_cvEvalResults.get(agg_idx).get(metric).addAll(cvEvalResults.get(metric));
+							}
+						} else {
+							agg_cvEvalResults.put(agg_idx, cvEvalResults);
 						}
 					}
 				}
 			}
 		}
+	}
+
+	public String getGlobalOutputPath(String topn) throws ClassNotFoundException, IOException {
+		String res = conf.get("dfs.result.dir") + "/" + conf.get("data.input.path") + "-"
+				+ DriverClassUtil.getDriverName(getRecommenderClass()) + "-output/" + "[Top-" + topn + "]"
+				+ "[Learnrate=" + conf.get("rec.iterator.learnrate") + "]" + "[Iteration="
+				+ conf.get("rec.iterator.maximum") + "]" + "[Factor=" + conf.get("rec.factor.number") + "]["
+				+ conf.get("data.model.splitter");
+		return res;
 	}
 
 	/**
@@ -322,14 +378,15 @@ public class RecommenderJob {
 		String factorNumber = conf.get("rec.factor.number");
 		String iteratorMaximum = conf.get("rec.iterator.maximum");
 		String rankingTopN = conf.get("rec.recommender.ranking.topn");
-		PrintWriter pw = new PrintWriter("output.txt");
+		String coeff = "[" + String.valueOf(alpha) + " " + String.valueOf(beta) + " " + String.valueOf(gamma);
 		if (recommendedList != null && recommendedList.size() > 0) {
 			// make output path
 			String algoSimpleName = DriverClassUtil.getDriverName(getRecommenderClass());
 			String localOutputPath = null;
 			globalOutputPath = conf.get("dfs.result.dir") + "/" + conf.get("data.input.path") + "-" + algoSimpleName
 					+ "-output/" + "[Top-" + rankingTopN + "]" + "[Learnrate=" + iteratorLearnrate + "]" + "[Iteration="
-					+ iteratorMaximum + "]" + "[Factor=" + factorNumber + "][" + conf.get("data.model.splitter");
+					+ iteratorMaximum + "]" + "[Factor=" + factorNumber + "][" + conf.get("data.model.splitter") + "]"
+					+ coeff;
 
 			if (null != dataModel
 					&& (dataModel.getDataSplitter() instanceof KCVDataSplitter
@@ -345,13 +402,6 @@ public class RecommenderJob {
 			LOG.info("Result path is " + localOutputPath);
 			// convert itemList to string
 			StringBuilder sb = new StringBuilder();
-
-			// for (RecommendedItem recItem : recommendedList) {
-			// String userId = recItem.getUserId();
-			// String itemId = recItem.getItemId();
-			// String value = String.valueOf(recItem.getValue());
-			// sb.append(userId).append(",").append(itemId).append(",").append(value).append("\n");
-			// }
 
 			for (String metric : evalResultList.keySet()) {
 				Double result = evalResultList.get(metric);
@@ -371,28 +421,38 @@ public class RecommenderJob {
 
 	/**
 	 * Print the average evaluate results when using cross validation.
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
 	 */
-	private void printCVAverageResult() {
-		StringBuilder sb = new StringBuilder();
-		String localOutputPath = globalOutputPath + "-avg].txt";
-		LOG.info("Average Evaluation Result of Cross Validation:");
-		for (Map.Entry<String, List<Double>> entry : cvEvalResults.entrySet()) {
-			String evalName = entry.getKey();
-			List<Double> evalList = entry.getValue();
-			double sum = 0.0;
-			for (double value : evalList) {
-				sum += value;
+	private void printCVAverageResult() throws ClassNotFoundException, IOException {
+
+		for (int i = 0; i < agg_cvEvalResults.size(); i++) {
+			StringBuilder sb = new StringBuilder();
+			String targetN = paramInfo.get("topN").get(i);
+			String localOutputPath = getGlobalOutputPath(targetN) + "-avg].txt";
+
+			LOG.info("Average Evaluation Result of Cross Validation:");
+
+			for (Map.Entry<String, List<Double>> entry : agg_cvEvalResults.get(Integer.parseInt(targetN)).entrySet()) {
+				String evalName = entry.getKey();
+				List<Double> evalList = entry.getValue();
+				double sum = 0.0;
+				for (double value : evalList) {
+					sum += value;
+				}
+				double avgEvalResult = sum / evalList.size();
+				LOG.info("Evaluator value:" + evalName + " is " + avgEvalResult);
+				sb.append(evalName).append('\t').append(avgEvalResult).append('\n');
 			}
-			double avgEvalResult = sum / evalList.size();
-			LOG.info("Evaluator value:" + evalName + " is " + avgEvalResult);
-			sb.append(evalName).append('\t').append(avgEvalResult).append('\n');
+			String resultData = sb.toString();
+			try {
+				FileUtil.writeString(localOutputPath, resultData);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		String resultData = sb.toString();
-		try {
-			FileUtil.writeString(localOutputPath, resultData);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 	}
 
 	/**
@@ -403,7 +463,8 @@ public class RecommenderJob {
 	 * @param evalValue
 	 *            value of the evaluate result
 	 */
-	private void collectCVResults(String evalName, Double evalValue) {
+	private Map<String, List<Double>> collectCVResults(String evalName, Double evalValue,
+			Map<String, List<Double>> cvEvalResults) {
 		DataSplitter splitter = dataModel.getDataSplitter();
 		if (splitter != null && (splitter instanceof KCVDataSplitter || splitter instanceof LOOCVDataSplitter)) {
 			if (cvEvalResults.containsKey(evalName)) {
@@ -413,7 +474,9 @@ public class RecommenderJob {
 				newList.add(evalValue);
 				cvEvalResults.put(evalName, newList);
 			}
+			return cvEvalResults;
 		}
+		return null;
 	}
 
 	private void setJobId(String jobId) {
@@ -429,13 +492,7 @@ public class RecommenderJob {
 	}
 
 	public void setParamInfo() {
-		/*
-		 * List<String> topNs = Arrays.asList(new String[] { "5" , "10" , "20" , "30"
-		 * }); List<String> learnrates = Arrays.asList(new String[] { "0.01" , "0.1" });
-		 * List<String> iterations = Arrays.asList(new String[] { "300" }); List<String>
-		 * factors = Arrays.asList(new String[] { "10" });
-		 */
-		List<String> topNs = Arrays.asList(new String[] { "10" });
+		List<String> topNs = Arrays.asList(new String[] { "5", "10", "20", "30" });
 		List<String> learnrates = Arrays.asList(new String[] { "0.01" });
 		List<String> iterations = Arrays.asList(new String[] { "100" });
 		List<String> factors = Arrays.asList(new String[] { "10" });

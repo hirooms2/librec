@@ -392,4 +392,16 @@ public class HFTRecommender extends TensorRecommender {
         return null;
     }
 
+	@Override
+	public void setTopN(int topN) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getTopN() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

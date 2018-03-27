@@ -48,6 +48,7 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 	private int N;
 	Set<Integer> UNitemSet;
 	Set<Integer> NEitemSet;
+	double alpha, gamma, beta;
 
 	@Override
 	protected void setup() throws LibrecException {
@@ -58,7 +59,10 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 	protected void trainModel() throws LibrecException {
 
 		INuserItemsSet = getUserItemsSet_IN(trainMatrix);
+		System.out.println(alpha + " " + beta + " " + gamma);
 
+		int cnt = 0;
+		int sum = 0;
 		for (int iter = 1; iter <= numIterations; iter++) {
 
 			loss = 0.0d;
@@ -104,7 +108,7 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 					 */
 					do {
 						NEItemIdx = Randoms.uniform(numItems);
-						if (!INitemSet.contains(NEItemIdx))
+						if (!INitemSet.contains(NEItemIdx) && !UNitemSet.contains(NEItemIdx))
 							break;
 					} while (true);
 
@@ -117,18 +121,9 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 				double NEPredictRating = predict(userIdx, NEItemIdx);
 				double UNPredictRating = predict(userIdx, UNItemIdx);
 
-				int indicator = UNitemSet.contains(NEItemIdx) ? 1 : 0;
-
-				double alpha = 1;
-				double beta = 0;
-
-				if (indicator == 1) {
-					alpha = 20;
-					beta = 0;
-				}
-
 				double diffValue = (INPredictRating - NEPredictRating) * alpha
-						+ (NEPredictRating - UNPredictRating) * beta;
+						+ (INPredictRating - UNPredictRating) * beta + (NEPredictRating - UNPredictRating) * gamma;
+
 				double lossValue = -Math.log(Maths.logistic(diffValue));
 				loss += lossValue;
 
@@ -141,22 +136,29 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 					double UNItemFactorValue = itemFactors.get(UNItemIdx, factorIdx);
 
 					userFactors.add(userIdx, factorIdx,
-							learnRate * (deriValue * (alpha) * (INItemFactorValue - NEItemFactorValue)
-									+ beta * (NEItemFactorValue - UNItemFactorValue) - regUser * userFactorValue));
+							learnRate * (deriValue
+									* (alpha * (INItemFactorValue - NEItemFactorValue)
+											+ beta * (INItemFactorValue - UNItemFactorValue)
+											+ gamma * (NEItemFactorValue - UNItemFactorValue))
+									- regUser * userFactorValue));
 					itemFactors.add(INItemIdx, factorIdx,
-							learnRate * (deriValue * (alpha) * userFactorValue - regItem * INItemFactorValue));
+							learnRate * (deriValue * (alpha + beta) * userFactorValue - regItem * INItemFactorValue));
 					itemFactors.add(NEItemIdx, factorIdx,
-							learnRate * (deriValue * (beta - alpha) * userFactorValue - regItem * NEItemFactorValue));
+							learnRate * (deriValue * (gamma - alpha) * userFactorValue - regItem * NEItemFactorValue));
+					itemFactors.add(UNItemIdx, factorIdx,
+							learnRate * (deriValue * (-gamma - beta) * userFactorValue - regItem * UNItemFactorValue));
 
 					loss += regUser * userFactorValue * userFactorValue
 							+ regItem * INItemFactorValue * INItemFactorValue
-							+ regItem * NEItemFactorValue * NEItemFactorValue;
+							+ regItem * NEItemFactorValue * NEItemFactorValue
+							+ regItem * UNItemFactorValue * UNItemFactorValue;
 
-//					if (indicator == 0) {
-//						itemFactors.add(UNItemIdx, factorIdx,
-//								learnRate * (deriValue * -(beta) * userFactorValue - regItem * UNItemFactorValue));
-//						loss += regUser * UNItemFactorValue * UNItemFactorValue;
-//					}
+					// if (indicator == 0) {
+					// itemFactors.add(UNItemIdx, factorIdx,
+					// learnRate * (deriValue * -(beta) * userFactorValue - regItem *
+					// UNItemFactorValue));
+					// loss += regUser * UNItemFactorValue * UNItemFactorValue;
+					// }
 				}
 
 			}
@@ -187,5 +189,20 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 	private Set<Integer> getItemsSet_NE(SparseMatrix sparseMatrix, int userIdx, int N) {
 
 		return new HashSet(sparseMatrix.getColumns_NE(userIdx, N));
+	}
+
+	public void setAlpha(double alpha) {
+		// TODO Auto-generated method stub
+		this.alpha = alpha;
+	}
+
+	public void setBeta(double beta) {
+		// TODO Auto-generated method stub
+		this.beta = beta;
+	}
+
+	public void setGamma(double gamma) {
+		// TODO Auto-generated method stub
+		this.gamma = gamma;
 	}
 }

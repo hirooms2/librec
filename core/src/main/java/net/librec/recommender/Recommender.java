@@ -32,64 +32,75 @@ import java.util.Map;
  * @author WangYuFeng
  */
 public interface Recommender {
-    /**
-     * recommend
-     *
-     * @param context  recommender context
-     * @throws LibrecException if error occurs during recommending
-     */
-    void recommend(RecommenderContext context) throws LibrecException;
+	/**
+	 * recommend
+	 *
+	 * @param context
+	 *            recommender context
+	 * @throws LibrecException
+	 *             if error occurs during recommending
+	 */
+	void recommend(RecommenderContext context) throws LibrecException;
 
-    /**
-     * evaluate
-     *
-     * @param  evaluator recommender evaluator
-     * @return evaluate result
-     * @throws LibrecException if error occurs during evaluating
-     */
-    double evaluate(RecommenderEvaluator evaluator) throws LibrecException;
+	/**
+	 * evaluate
+	 *
+	 * @param evaluator
+	 *            recommender evaluator
+	 * @return evaluate result
+	 * @throws LibrecException
+	 *             if error occurs during evaluating
+	 */
+	double evaluate(RecommenderEvaluator evaluator) throws LibrecException;
 
-    /**
-     * evaluate Map
-     *
-     * @return evaluate map
-     * @throws LibrecException if error occurs during constructing evaluate map
-     */
-    Map<MeasureValue, Double> evaluateMap() throws LibrecException;
+	/**
+	 * evaluate Map
+	 *
+	 * @return evaluate map
+	 * @throws LibrecException
+	 *             if error occurs during constructing evaluate map
+	 */
+	Map<MeasureValue, Double> evaluateMap() throws LibrecException;
 
-    /**
-     * get DataModel
-     *
-     * @return data model
-     */
-    DataModel getDataModel();
+	/**
+	 * get DataModel
+	 *
+	 * @return data model
+	 */
+	DataModel getDataModel();
 
-    /**
-     * load Model
-     *
-     * @param filePath file path
-     */
-    void loadModel(String filePath);
+	/**
+	 * load Model
+	 *
+	 * @param filePath
+	 *            file path
+	 */
+	void loadModel(String filePath);
 
-    /**
-     * save Model
-     *
-     * @param filePath file path
-     */
-    void saveModel(String filePath);
+	/**
+	 * save Model
+	 *
+	 * @param filePath
+	 *            file path
+	 */
+	void saveModel(String filePath);
 
-    /**
-     * get Recommended List
-     *
-     * @return  recommended list
-     */
-    List<RecommendedItem> getRecommendedList();
+	/**
+	 * get Recommended List
+	 *
+	 * @return recommended list
+	 */
+	List<RecommendedItem> getRecommendedList();
 
+	/**
+	 * set Context
+	 *
+	 * @param context
+	 *            recommender context
+	 */
+	void setContext(RecommenderContext context);
 
-    /**
-     * set Context
-     *
-     * @param context recommender context
-     */
-    void setContext(RecommenderContext context);
+	void setTopN(int topN);
+
+	int getTopN();
 }
