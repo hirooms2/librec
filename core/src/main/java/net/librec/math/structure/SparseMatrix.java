@@ -157,43 +157,20 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
 			list.add(new ArrayList<Pair>());
 
 		for (int row = 0; row < numRows; row++) {
+			rated = 0;
 			for (int j = rowPtr[row]; j < rowPtr[row + 1]; j++) {
 				int col = colInd[j];
 				double val = rowData[j];
 				list.get(row).add(new Pair(col, val));
 
-				if (val < 0.1) {
-					cnt[0]++;
-				} else if (val < 0.2) {
-					cnt[1]++;
-				} else if (val < 0.3) {
-					cnt[2]++;
-				} else if (val < 0.4) {
-					cnt[3]++;
-				} else if (val < 0.5) {
-					cnt[4]++;
-				} else if (val < 0.6) {
-					cnt[5]++;
-				} else if (val < 0.7) {
-					cnt[6]++;
-				} else if (val < 0.8) {
-					cnt[7]++;
-				} else if (val < 0.9) {
-					cnt[8]++;
-				} else if (val <= 1) {
-					cnt[9]++;
-				}
 				if (val == 1) {
 					rated++;
 				}
 			}
+			
 			Collections.sort(list.get(row));
 		}
 
-		for (int i : cnt) {
-			System.out.print(i + " ");
-		}
-		System.out.println();
 	}
 
 	private void copyCRS(double[] data, int[] ptr, int[] idx) {

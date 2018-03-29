@@ -53,7 +53,7 @@ public class MyRecTestCase2 extends BaseTestCase {
 		RecommenderJob job = new RecommenderJob(conf);
 
 		for (int theta = 55; theta >= 55; theta -= 100) {
-			job.setAlpha(theta);
+			job.setTheta(theta);
 			job.runJob();
 		}
 	}

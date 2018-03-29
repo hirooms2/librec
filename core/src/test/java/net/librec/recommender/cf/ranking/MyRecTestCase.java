@@ -51,16 +51,15 @@ public class MyRecTestCase extends BaseTestCase {
 		Configuration.Resource resource = new Configuration.Resource("rec/cf/ranking/myrec-test.properties");
 		conf.addResource(resource);
 		RecommenderJob job = new RecommenderJob(conf);
-		
-		for (double alpha = 0; alpha <= 100; alpha += 5) {
-			for (double beta = 0; beta <= 100; beta += 5) {
+
+		for (double alpha = 0; alpha <= 100; alpha += 1) {
+			for (double beta = 0; beta <= 100; beta += 1) {
 				if (alpha + beta == 100) {
 					job.setAlpha(alpha / 100);
 					job.setBeta(beta / 100);
 					job.setGamma(0);
 					job.runJob();
 				}
-
 			}
 		}
 

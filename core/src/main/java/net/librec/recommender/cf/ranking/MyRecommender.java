@@ -22,6 +22,7 @@ import net.librec.common.LibrecException;
 import net.librec.data.model.Pair;
 import net.librec.math.algorithm.Maths;
 import net.librec.math.algorithm.Randoms;
+import net.librec.math.structure.DenseVector;
 import net.librec.math.structure.MatrixEntry;
 import net.librec.math.structure.SparseMatrix;
 import net.librec.recommender.MatrixFactorizationRecommender;
@@ -50,9 +51,15 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 	Set<Integer> NEitemSet;
 	double alpha, gamma, beta;
 
+	private DenseVector itemBiases;
+
 	@Override
 	protected void setup() throws LibrecException {
+
 		super.setup();
+
+		itemBiases = new DenseVector(numItems);
+		itemBiases.init();
 	}
 
 	@Override
@@ -61,8 +68,6 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 		INuserItemsSet = getUserItemsSet_IN(trainMatrix);
 		System.out.println(alpha + " " + beta + " " + gamma);
 
-		int cnt = 0;
-		int sum = 0;
 		for (int iter = 1; iter <= numIterations; iter++) {
 
 			loss = 0.0d;
@@ -121,13 +126,30 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 				double NEPredictRating = predict(userIdx, NEItemIdx);
 				double UNPredictRating = predict(userIdx, UNItemIdx);
 
-				double diffValue = (INPredictRating - NEPredictRating) * alpha
-						+ (INPredictRating - UNPredictRating) * beta + (NEPredictRating - UNPredictRating) * gamma;
+				double diffValueA = (INPredictRating - NEPredictRating) * alpha;
+				double diffValueB = (INPredictRating - UNPredictRating) * beta;
+				// double diffValueC = (NEPredictRating - UNPredictRating) * gamma;
 
-				double lossValue = -Math.log(Maths.logistic(diffValue));
+				double lossValue = -Math.log(Maths.logistic(diffValueA)) - Math.log(Maths.logistic(diffValueB));
 				loss += lossValue;
 
-				double deriValue = Maths.logistic(-diffValue);
+				double deriValueA = Maths.logistic(-diffValueA);
+				double deriValueB = Maths.logistic(-diffValueB);
+				// double deriValueC = Maths.logistic(-diffValueC);
+
+				// // update bi, bj
+				// double INBiasValue = itemBiases.get(INItemIdx);
+				// double regBias = 0.01;
+				// itemBiases.add(INItemIdx, learnRate * (alpha * deriValueA + beta * deriValueB
+				// - regBias * INBiasValue));
+				//
+				// double NEBiasValue = itemBiases.get(NEItemIdx);
+				// itemBiases.add(NEItemIdx, learnRate * (-deriValueA * alpha - regBias *
+				// NEBiasValue));
+				//
+				// double UNBiasValue = itemBiases.get(UNItemIdx);
+				// itemBiases.add(UNItemIdx, learnRate * (-deriValueB * beta - regBias *
+				// UNBiasValue));
 
 				for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
 					double userFactorValue = userFactors.get(userIdx, factorIdx);
@@ -136,17 +158,15 @@ public class MyRecommender extends MatrixFactorizationRecommender {
 					double UNItemFactorValue = itemFactors.get(UNItemIdx, factorIdx);
 
 					userFactors.add(userIdx, factorIdx,
-							learnRate * (deriValue
-									* (alpha * (INItemFactorValue - NEItemFactorValue)
-											+ beta * (INItemFactorValue - UNItemFactorValue)
-											+ gamma * (NEItemFactorValue - UNItemFactorValue))
+							learnRate * (deriValueA * alpha * (INItemFactorValue - NEItemFactorValue)
+									+ deriValueB * beta * (INItemFactorValue - UNItemFactorValue)
 									- regUser * userFactorValue));
-					itemFactors.add(INItemIdx, factorIdx,
-							learnRate * (deriValue * (alpha + beta) * userFactorValue - regItem * INItemFactorValue));
+					itemFactors.add(INItemIdx, factorIdx, learnRate * (deriValueA * alpha * userFactorValue
+							+ deriValueB * beta * userFactorValue - regItem * INItemFactorValue));
 					itemFactors.add(NEItemIdx, factorIdx,
-							learnRate * (deriValue * (gamma - alpha) * userFactorValue - regItem * NEItemFactorValue));
+							learnRate * (deriValueA * (-alpha) * userFactorValue - regItem * NEItemFactorValue));
 					itemFactors.add(UNItemIdx, factorIdx,
-							learnRate * (deriValue * (-gamma - beta) * userFactorValue - regItem * UNItemFactorValue));
+							learnRate * (deriValueB * (-beta) * userFactorValue - regItem * UNItemFactorValue));
 
 					loss += regUser * userFactorValue * userFactorValue
 							+ regItem * INItemFactorValue * INItemFactorValue

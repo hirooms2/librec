@@ -33,6 +33,7 @@ import net.librec.common.LibrecException;
 import net.librec.data.model.Pair;
 import net.librec.math.algorithm.Maths;
 import net.librec.math.algorithm.Randoms;
+import net.librec.math.structure.DenseVector;
 import net.librec.math.structure.SparseMatrix;
 import net.librec.recommender.MatrixFactorizationRecommender;
 
@@ -49,10 +50,14 @@ public class MyRecommender2 extends MatrixFactorizationRecommender {
 	private List<Set<Integer>> NEuserItemsSet;
 	private List<Set<Integer>> UNuserItemsSet;
 	private int N, alpha;
+	private DenseVector itemBiases;
 
 	@Override
 	protected void setup() throws LibrecException {
 		super.setup();
+		itemBiases = new DenseVector(numItems);
+		itemBiases.init();
+
 	}
 
 	@Override
@@ -94,9 +99,9 @@ public class MyRecommender2 extends MatrixFactorizationRecommender {
 				}
 
 				// update parameters
-				double INPredictRating = predict(userIdx, INItemIdx);
-				double UNPredictRating = predict(userIdx, UNItemIdx);
-				double NEPredictRating = predict(userIdx, NEItemIdx);
+				double INPredictRating = predict(userIdx, INItemIdx) + itemBiases.get(INItemIdx);
+				double NEPredictRating = predict(userIdx, NEItemIdx) + itemBiases.get(NEItemIdx);
+				double UNPredictRating = predict(userIdx, UNItemIdx) + itemBiases.get(UNItemIdx);
 				double diffValue = 0;
 
 				Random generator = new Random();
@@ -111,6 +116,17 @@ public class MyRecommender2 extends MatrixFactorizationRecommender {
 				loss += lossValue;
 
 				double deriValue = Maths.logistic(-diffValue);
+
+				// update bi, bj
+				double INBiasValue = itemBiases.get(INItemIdx);
+				double regBias = 0.01;
+				itemBiases.add(INItemIdx, learnRate * (deriValue) - regBias * INBiasValue);
+
+				double NEBiasValue = itemBiases.get(NEItemIdx);
+				itemBiases.add(NEItemIdx, learnRate * (-deriValue) - regBias * NEBiasValue);
+
+				double UNBiasValue = itemBiases.get(UNItemIdx);
+				itemBiases.add(UNItemIdx, learnRate * (-deriValue) - regBias * UNBiasValue);
 
 				for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
 					double userFactorValue = userFactors.get(userIdx, factorIdx);

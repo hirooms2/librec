@@ -172,5 +172,7 @@ public class WRMFRecommender extends MatrixFactorizationRecommender {
                 LOG.info(getClass()+" runs at iteration = "+iter+" "+new Date());
             }
         }
+        System.out.println(numItems);
+        System.out.println(numUsers);
     }
 }
